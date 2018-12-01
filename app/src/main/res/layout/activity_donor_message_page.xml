@@ -6,4 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".DonorMessagePage">
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="330dp"
+        android:layout_height="324dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="343dp"
+        android:layout_height="85dp"
+        android:text="Send a Message to Donors"
+        android:textColor="@android:color/background_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="23dp" />
 </android.support.constraint.ConstraintLayout>

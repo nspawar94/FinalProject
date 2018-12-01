@@ -6,4 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".CloseRequestPage">
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="258dp"
+        android:layout_height="106dp"
+        android:text="Are you sure you want to close this request?"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="88dp" />
+
+    <Button
+        android:id="@+id/buttonBackToRequest"
+        android:layout_width="259dp"
+        android:layout_height="43dp"
+        android:background="@android:color/darker_gray"
+        android:text="Back to Request"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="233dp" />
+
+    <Button
+        android:id="@+id/buttonConfirmClose"
+        android:layout_width="259dp"
+        android:layout_height="43dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Confirm Close Request"
+        android:textColor="@android:color/background_light"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="285dp" />
 </android.support.constraint.ConstraintLayout>

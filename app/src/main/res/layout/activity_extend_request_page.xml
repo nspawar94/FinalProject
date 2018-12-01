@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExtendRequestPage">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="267dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="57dp"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="99dp"
+        android:text="Your request for Johnny Bravo will expire at 17:15pm, would you like to extend the request?"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonextendconfirm"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginBottom="216dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Extend for another 24 hours"
+        android:textColor="@android:color/background_light" />
+
+    <Button
+        android:id="@+id/buttonCloseRequest"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginBottom="151dp"
+        android:background="@android:color/darker_gray"
+        android:text="Close this request"
+        android:textColor="@android:color/background_light" />
+</RelativeLayout>

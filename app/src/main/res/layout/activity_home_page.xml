@@ -1,9 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/buttonnewrequest"
+        android:layout_width="159dp"
+        android:layout_height="73dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="New Emergency Request"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="29dp" />
+
+    <Button
+        android:id="@+id/buttonnewdonation"
+        android:layout_width="159dp"
+        android:layout_height="73dp"
+        android:layout_alignBottom="@+id/buttonnewrequest"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="0dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="New Donation"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="29dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="117dp"
+        android:text="3 People need your help!"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonCurrentRequest"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="149dp"
+        android:background="@android:color/holo_orange_dark"
+        android:text="See Current Emergency Requests"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/buttonCurrentRequest"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="221dp"
+        android:text="Requests You Have Posted"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="208dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/buttonAcceptItem1"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="209dp"
+        android:background="@android:color/darker_gray"
+        android:text="accep"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/buttonCancelItem1"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="174dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="i can't"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/buttonAcceptButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="141dp"
+        android:background="@android:color/darker_gray"
+        android:text="accept"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/buttonCancelButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="109dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="i can't"
+        android:textSize="12sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCancelItem1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginBottom="-147dp" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCancelItem1"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
+        android:layout_marginBottom="166dp" />
+
+</RelativeLayout>
