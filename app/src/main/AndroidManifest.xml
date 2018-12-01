@@ -16,6 +16,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".TermsOfUse" />
+        <activity android:name=".HomePage" />
+        <activity android:name=".RequestDashboard" />
+        <activity android:name=".AcceptPage" />
+        <activity android:name=".CancelPage" />
+        <activity android:name=".PreventAcceptPage" />
+        <activity android:name=".NewRequestPage" />
+        <activity android:name=".RequestConfirmPage" />
+        <activity android:name=".RequestStatusPage" />
+        <activity android:name=".DonorMessagePage" />
+        <activity android:name=".CloseRequestPage" />
+        <activity android:name=".ExtendRequestPage" />
+        <activity android:name=".DonationConfirmPage" />
+        <activity android:name=".ThankyouDonorPage" />
+        <activity android:name=".DonorProfilePage" />
+        <activity android:name=".ManualDonationPage"></activity>
     </application>
 
 </manifest>
