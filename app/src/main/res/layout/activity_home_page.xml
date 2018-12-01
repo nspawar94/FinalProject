@@ -7,7 +7,7 @@
     tools:context=".HomePage">
 
     <Button
-        android:id="@+id/buttonnewrequest"
+        android:id="@+id/buttonNewRequest"
         android:layout_width="159dp"
         android:layout_height="73dp"
         android:layout_alignParentStart="true"
@@ -24,10 +24,10 @@
         tools:layout_editor_absoluteY="29dp" />
 
     <Button
-        android:id="@+id/buttonnewdonation"
+        android:id="@+id/buttonNewDonation"
         android:layout_width="159dp"
         android:layout_height="73dp"
-        android:layout_alignBottom="@+id/buttonnewrequest"
+        android:layout_alignBottom="@+id/buttonNewRequest"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="17dp"
@@ -41,7 +41,7 @@
         tools:layout_editor_absoluteY="29dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewNeededPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -94,7 +94,7 @@
         android:id="@+id/buttonAcceptItem1"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
-        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignEnd="@+id/textViewNeededPeople"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="63dp"
         android:layout_marginBottom="209dp"
@@ -106,7 +106,7 @@
         android:id="@+id/buttonCancelItem1"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
-        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignEnd="@+id/textViewNeededPeople"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="62dp"
         android:layout_marginBottom="174dp"
@@ -118,7 +118,7 @@
         android:id="@+id/buttonAcceptButton2"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
-        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignEnd="@+id/textViewNeededPeople"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="63dp"
         android:layout_marginBottom="141dp"
@@ -130,7 +130,7 @@
         android:id="@+id/buttonCancelButton2"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
-        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignEnd="@+id/textViewNeededPeople"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="63dp"
         android:layout_marginBottom="109dp"
@@ -139,6 +139,7 @@
         android:textSize="12sp" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/dynamicRequestList"
         android:layout_width="57dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonCancelItem1"
@@ -149,7 +150,7 @@
         android:layout_marginBottom="-147dp" />
 
     <Switch
-        android:id="@+id/switch3"
+        android:id="@+id/switchItem1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonCancelItem1"
@@ -159,7 +160,7 @@
         android:layout_marginRight="33dp" />
 
     <Switch
-        android:id="@+id/switch4"
+        android:id="@+id/switchItem2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
