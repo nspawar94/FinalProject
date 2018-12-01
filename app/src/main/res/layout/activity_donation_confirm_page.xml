@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DonationConfirmPage">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textClosed"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="83dp"
+        android:layout_marginLeft="83dp"
+        android:layout_marginTop="79dp"
+        android:text="Recipient has closed their request. Please let us know if you have donated your blood to help this recipient."
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Recipient has closed their request. Please let us know if you have donated your blood to help this recipient." />
+
+    <Button
+        android:id="@+id/buttonNo"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="212dp"
+        android:layout_marginLeft="212dp"
+        android:layout_marginBottom="161dp"
+        android:text="No"
+        tools:text="No" />
+
+    <Button
+        android:id="@+id/buttonYes"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginBottom="161dp"
+        android:text="Yes"
+        tools:text="Yes" />
+
+</RelativeLayout>

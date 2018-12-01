@@ -6,4 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".ManualDonationPage">
 
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textStyle="bold"
+        tools:background="@android:color/holo_green_dark"
+        tools:layout_editor_absoluteX="228dp"
+        tools:layout_editor_absoluteY="386dp"
+        tools:textColor="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/textLocation"
+        android:layout_width="103dp"
+        android:layout_height="33dp"
+        android:text="Location"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="270dp"
+        tools:text="Location" />
+
+    <TextView
+        android:id="@+id/textNewDonation"
+        android:layout_width="315dp"
+        android:layout_height="43dp"
+        android:text="(+) New Donation"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:text="(+) New Donation" />
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="103dp"
+        android:layout_height="33dp"
+        android:text="Date"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="178dp"
+        tools:text="Date" />
+
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <EditText
+        android:id="@+id/editLocationEnter"
+        android:layout_width="213dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Donation center name"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="386dp" />
+
 </android.support.constraint.ConstraintLayout>

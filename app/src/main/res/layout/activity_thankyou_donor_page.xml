@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ThankyouDonorPage">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textThankYou"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="83dp"
+        android:layout_marginLeft="83dp"
+        android:layout_marginTop="79dp"
+        android:text="Thank you for helping save someone´s life!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Thank you for helping save someone´s life!" />
+
+    <TextView
+        android:id="@+id/textThreeMo"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textThankYou"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="179dp"
+        android:text="We will not send you any requests until you are eligible to donate again in 3 months"
+        android:textSize="18sp"
+        tools:text="We will not send you any requests until you are eligible to donate again in 3 months" />
+
+    <Button
+        android:id="@+id/buttonMain"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginLeft="109dp"
+        android:layout_marginBottom="165dp"
+        android:text="Back to Main Menu"
+        tools:text="Back to Main Menu" />
+</RelativeLayout>
