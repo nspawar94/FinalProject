@@ -6,34 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editTextEMail"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="227dp"
+        android:ems="10"
+        android:hint="Enter E-Mail"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="168dp"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEMail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="333dp"
-        android:text="Button" />
+        android:layout_marginTop="369dp"
+        android:text="Sign In" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="285dp"
-        android:layout_height="54dp"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="-197dp"
-        android:layout_toStartOf="@+id/button"
-        android:text="Button" />
+    <TextView
+        android:id="@+id/textNoAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editTextEMail"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-22dp"
+        android:layout_marginBottom="44dp"
+        android:text="No account yet?"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="148dp"
-        android:layout_marginRight="148dp"
-        android:layout_marginBottom="304dp"
-        android:text="Button" />
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:layout_marginBottom="29dp"
+        android:text="Create One"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="203dp"
+        android:layout_height="210dp"
+        android:layout_alignEnd="@+id/editTextEMail"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        app:srcCompat="@drawable/Blood_drop_plain" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginLeft="86dp"
+        android:layout_marginTop="106dp"
+        android:text="Cross Match"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
 
 </RelativeLayout>
