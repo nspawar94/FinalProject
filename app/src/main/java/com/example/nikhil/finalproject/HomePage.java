@@ -24,15 +24,15 @@ public class HomePage extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Intent i;
         if(v==buttonNewRequest){
-            i = new Intent(this,NewRequestPage.class);
+
+            Intent i = new Intent(this,NewRequestPage.class);
             this.startActivity(i);
         }else if(v==buttonNewDonation){
-            i = new Intent(this,ManualDonationPage.class);
+            Intent i = new Intent(this,ManualDonationPage.class);
             this.startActivity(i);
         }else if(v==buttonCurrentRequest){
-            i = new Intent(this, RequestDashboard.class);
+            Intent i = new Intent(this, RequestDashboard.class);
             this.startActivity(i);
         }
     }
