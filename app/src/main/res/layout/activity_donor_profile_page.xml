@@ -176,7 +176,7 @@
         android:src="@mipmap/ic_launcher_round" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/switchDonationType"
         android:layout_width="52dp"
         android:layout_height="38dp"
         android:layout_below="@+id/textView9"
