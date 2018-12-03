@@ -7,22 +7,21 @@ import android.view.View;
 import android.widget.Button;
 
 public class RequestConfirmPage extends Activity implements View.OnClickListener{
-    Button buttonRequest;
+    Button buttonViewReal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_confirm_page);
-
-        buttonRequest.findViewById(R.id.buttonRequest);
-        buttonRequest.setOnClickListener(this);
+        buttonViewReal=findViewById(R.id.buttonViewReal);
+        buttonViewReal.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v == buttonRequest){
-            Intent intentRequest = new Intent(this,MainActivity.class);
-            startActivity(intentRequest);
+        if(v == buttonViewReal){
+            Intent intentRealTime = new Intent(this,MainActivity.class);
+            startActivity(intentRealTime);
 
     }
 }}
