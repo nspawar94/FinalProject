@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,84 +10,130 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewPeopleNotified"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="-124dp"
         android:text="Real Time Request Result"
         android:textSize="30sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="34dp" />
+        tools:layout_editor_absoluteY="34dp"
+        android:layout_marginLeft="11dp"
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:id="@+id/textViewPeopleNotified"
         android:layout_width="75dp"
         android:layout_height="57dp"
+        android:layout_alignStart="@+id/textViewPeopleDonated2"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="100dp"
         android:text="32"
         android:textColor="@color/design_default_color_primary"
         android:textSize="36sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="103dp" />
+        tools:layout_editor_absoluteY="103dp"
+        android:layout_alignLeft="@+id/textViewPeopleDonated2"
+        android:layout_marginLeft="-2dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPeopleNotified"
+        android:layout_toEndOf="@+id/textViewPeopleNotified"
         android:text="Notified"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="119dp" />
+        tools:layout_editor_absoluteY="119dp"
+        android:layout_toRightOf="@+id/textViewPeopleNotified" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewPeopleAccepted"
+        android:layout_marginStart="-3dp"
+        android:layout_toEndOf="@+id/textViewPeopleAccepted"
         android:text="Accepted"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="181dp" />
+        tools:layout_editor_absoluteY="181dp"
+        android:layout_marginLeft="-3dp"
+        android:layout_toRightOf="@+id/textViewPeopleAccepted" />
 
     <TextView
         android:id="@+id/textViewPeopleDonated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonRefresh"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="223dp"
+        android:layout_marginEnd="47dp"
         android:text="(0 have donated before)"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="225dp" />
+        tools:layout_editor_absoluteY="225dp"
+        android:layout_alignRight="@+id/buttonRefresh" />
 
     <TextView
         android:id="@+id/textViewPeopleDonated2"
         android:layout_width="259dp"
         android:layout_height="48dp"
+        android:layout_alignStart="@+id/buttonRefresh"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="200dp"
         android:text="Please be patient while we connect to more people"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="267dp" />
+        tools:layout_editor_absoluteY="267dp"
+        android:layout_alignLeft="@+id/buttonRefresh"
+        android:layout_marginLeft="52dp" />
 
     <TextView
         android:id="@+id/textViewPeopleAccepted"
         android:layout_width="75dp"
         android:layout_height="53dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-74dp"
+        android:layout_marginTop="169dp"
+        android:layout_toEndOf="@+id/textViewPeopleNotified"
         android:text="0"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="36sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="172dp" />
+        tools:layout_editor_absoluteY="172dp"
+        android:layout_marginLeft="-74dp"
+        android:layout_toRightOf="@+id/textViewPeopleNotified" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewPeopleDonated2"
+        android:layout_alignEnd="@+id/textViewPeopleNotified"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="78dp"
         tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="267dp" />
+        tools:layout_editor_absoluteY="267dp"
+        android:layout_alignRight="@+id/textViewPeopleNotified"
+        android:layout_marginRight="78dp" />
 
     <Button
         android:id="@+id/buttonRefresh"
         android:layout_width="305dp"
         android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="128dp"
         android:background="@android:color/holo_green_dark"
         android:text="Refresh Button"
         android:textColor="@android:color/background_light"
@@ -98,10 +144,13 @@
         android:id="@+id/buttonCloseRequest"
         android:layout_width="305dp"
         android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
         android:background="@android:color/darker_gray"
         android:text="Close Request"
         android:textColor="@android:color/background_light"
         tools:layout_editor_absoluteX="40dp"
         tools:layout_editor_absoluteY="388dp" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

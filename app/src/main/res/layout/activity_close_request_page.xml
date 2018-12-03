@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +10,9 @@
         android:id="@+id/textView4"
         android:layout_width="258dp"
         android:layout_height="106dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="106dp"
         android:text="Are you sure you want to close this request?"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="63dp"
@@ -19,18 +22,32 @@
         android:id="@+id/buttonBackToRequest"
         android:layout_width="259dp"
         android:layout_height="43dp"
+        android:layout_alignStart="@+id/buttonConfirmClose"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="181dp"
         android:background="@android:color/darker_gray"
         android:text="Back to Request"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="233dp" />
+        tools:layout_editor_absoluteY="233dp"
+        android:layout_alignLeft="@+id/buttonConfirmClose"
+        android:layout_marginLeft="2dp" />
 
     <Button
         android:id="@+id/buttonConfirmClose"
         android:layout_width="259dp"
         android:layout_height="43dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="63dp"
+        android:layout_marginLeft="63dp"
+        android:layout_marginBottom="243dp"
         android:background="@android:color/holo_green_dark"
         android:text="Confirm Close Request"
         android:textColor="@android:color/background_light"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="63dp"
         tools:layout_editor_absoluteY="285dp" />
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
