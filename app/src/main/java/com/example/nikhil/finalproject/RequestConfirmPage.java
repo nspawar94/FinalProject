@@ -9,5 +9,6 @@ public class RequestConfirmPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_confirm_page);
+
     }
 }
