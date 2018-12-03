@@ -29,8 +29,7 @@
         android:layout_marginStart="21dp"
         android:layout_marginLeft="21dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/blooddrop"
-        android:src="@drawable/Blood_drop_plain" />
+        android:background="@drawable/blooddrop" />
 
     <TextView
         android:id="@+id/textView9"
