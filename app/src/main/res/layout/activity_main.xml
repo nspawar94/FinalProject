@@ -79,8 +79,7 @@
         android:layout_alignEnd="@+id/editTextEMail"
         android:layout_alignParentTop="true"
         android:layout_marginTop="28dp"
-        android:background="@drawable/blooddrop"
-        app:srcCompat="@drawable/Blood_drop_plain" />
+        app:srcCompat="@drawable/blooddrop" />
 
     <TextView
         android:id="@+id/textView16"
