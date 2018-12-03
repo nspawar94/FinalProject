@@ -21,23 +21,7 @@
         tools:layout_editor_absoluteY="34dp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="321dp"
-        android:layout_height="276dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="135dp"
-        android:background="?attr/colorBackgroundFloating"
-        android:text="Your request has been sent to all potential donors nearby. Please be patient as they accept your request as quickly as possible.  All donors will be further verified when they proceed to the donation site you indicated in your request.  "
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="83dp" />
-
-    <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -49,4 +33,15 @@
         android:text="View Request in Real Time"
         tools:layout_editor_absoluteX="86dp"
         tools:layout_editor_absoluteY="371dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="296dp"
+        android:layout_height="168dp"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="-252dp"
+        android:text="Your request has been sent to all potential donors nearby. Please be patient as they accept your request as quickly as possible.  All donors will be further verified when they proceed to the donation site you indicated in your request.  "
+        android:textSize="20sp" />
 </RelativeLayout>

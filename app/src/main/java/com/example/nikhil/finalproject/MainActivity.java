@@ -26,5 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v == buttonSignUp){
             Intent intentSignUp = new Intent(this,CreateAccount.class);
             startActivity(intentSignUp);
-    }}
-}
+    }else if(v == buttonSignIn){
+            Intent intentSignIn = new Intent(this,NewRequestPage.class);
+            startActivity(intentSignIn);
+        }
+
+}}
