@@ -17,7 +17,7 @@ public class RequestStatusPage extends Activity implements View.OnClickListener 
 
         buttonRefresh = findViewById(R.id.buttonRefresh);
         buttonCloseRequest = findViewById(R.id.buttonCloseRequest);
-        
+
         buttonRefresh.setOnClickListener(this);
         buttonCloseRequest.setOnClickListener(this);
 
