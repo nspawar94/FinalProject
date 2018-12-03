@@ -17,7 +17,7 @@
         android:layout_marginLeft="210dp"
         android:layout_marginBottom="23dp"
         android:background="@android:color/holo_green_light"
-        android:text="Agree & Summit" />
+        android:text="Agree and Summit" />
 
     <TextView
         android:id="@+id/textView5"
@@ -68,6 +68,6 @@
         android:layout_marginStart="21dp"
         android:layout_marginLeft="21dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/Blood_drop_plain" />
+        app:srcCompat="@drawable/blooddrop" />
 
 </RelativeLayout>

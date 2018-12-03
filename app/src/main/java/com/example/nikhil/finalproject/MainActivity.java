@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button buttonSignIn,buttonSignUp;
+    Button buttonSignIn,buttonSignUp ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         buttonSignIn = findViewById(R.id.buttonSignIn);
-        buttonSignUp = findViewById(R.id.buttonSignUp);
+        buttonSignUp = findViewById(R.id.buttonSignup);
+
         buttonSignIn.setOnClickListener(this);
         buttonSignUp.setOnClickListener(this);
     }

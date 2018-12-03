@@ -8,27 +8,27 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="267dp"
-        android:layout_height="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="57dp"
-        android:layout_marginLeft="57dp"
-        android:layout_marginTop="99dp"
-        android:text="Your request for Johnny Bravo will expire at 17:15pm, would you like to extend the request?"
+        android:layout_marginStart="106dp"
+        android:layout_marginLeft="106dp"
+        android:layout_marginTop="37dp"
+        android:text="Your request for"
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/buttonextendconfirm"
+        android:id="@+id/buttonExtendRequest"
         android:layout_width="276dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginBottom="104dp"
         android:background="@android:color/holo_green_dark"
         android:text="Extend for another 24 hours"
         android:textColor="@android:color/background_light" />
@@ -40,10 +40,59 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginBottom="151dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginBottom="37dp"
         android:background="@android:color/darker_gray"
         android:text="Close this request"
         android:textColor="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/textViewPatientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/buttonExtendRequest"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="93dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        tools:text="Patient Name" />
+
+    <TextView
+        android:id="@+id/textViewExpireTime"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:layout_marginBottom="318dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        tools:text="Time" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="269dp"
+        android:layout_height="64dp"
+        android:layout_alignEnd="@+id/textViewExpireTime"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="-25dp"
+        android:layout_marginBottom="237dp"
+        android:text="Would you like to extend the request?"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewExpireTime"
+        android:layout_alignStart="@+id/textViewExpireTime"
+        android:layout_marginStart="-158dp"
+        android:layout_marginBottom="-41dp"
+        android:text=" will expire at"
+        android:textSize="24sp" />
 </RelativeLayout>
