@@ -18,7 +18,9 @@
         android:textSize="30sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="34dp" />
+        tools:layout_editor_absoluteY="34dp"
+        android:layout_marginLeft="11dp"
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:id="@+id/textViewPeopleNotified"
@@ -32,7 +34,9 @@
         android:textColor="@color/design_default_color_primary"
         android:textSize="36sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="103dp" />
+        tools:layout_editor_absoluteY="103dp"
+        android:layout_alignLeft="@+id/textViewPeopleDonated2"
+        android:layout_marginLeft="-2dp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -44,7 +48,8 @@
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="119dp" />
+        tools:layout_editor_absoluteY="119dp"
+        android:layout_toRightOf="@+id/textViewPeopleNotified" />
 
     <TextView
         android:id="@+id/textView10"
@@ -57,7 +62,9 @@
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="181dp" />
+        tools:layout_editor_absoluteY="181dp"
+        android:layout_marginLeft="-3dp"
+        android:layout_toRightOf="@+id/textViewPeopleAccepted" />
 
     <TextView
         android:id="@+id/textViewPeopleDonated"
@@ -71,7 +78,8 @@
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="225dp" />
+        tools:layout_editor_absoluteY="225dp"
+        android:layout_alignRight="@+id/buttonRefresh" />
 
     <TextView
         android:id="@+id/textViewPeopleDonated2"
@@ -85,7 +93,9 @@
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="267dp" />
+        tools:layout_editor_absoluteY="267dp"
+        android:layout_alignLeft="@+id/buttonRefresh"
+        android:layout_marginLeft="52dp" />
 
     <TextView
         android:id="@+id/textViewPeopleAccepted"
@@ -99,7 +109,9 @@
         android:textColor="@android:color/holo_red_dark"
         android:textSize="36sp"
         tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="172dp" />
+        tools:layout_editor_absoluteY="172dp"
+        android:layout_marginLeft="-74dp"
+        android:layout_toRightOf="@+id/textViewPeopleNotified" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -111,7 +123,9 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="78dp"
         tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="267dp" />
+        tools:layout_editor_absoluteY="267dp"
+        android:layout_alignRight="@+id/textViewPeopleNotified"
+        android:layout_marginRight="78dp" />
 
     <Button
         android:id="@+id/buttonRefresh"
