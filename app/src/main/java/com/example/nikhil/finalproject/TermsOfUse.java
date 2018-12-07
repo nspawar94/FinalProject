@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class TermsOfUse extends Activity implements View.OnClickListener{
 
     Button buttonDisagree, buttonAgree;
-
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class TermsOfUse extends Activity implements View.OnClickListener{
 
         buttonDisagree.setOnClickListener(this);
         buttonAgree.setOnClickListener(this);
+
 
 
     }
