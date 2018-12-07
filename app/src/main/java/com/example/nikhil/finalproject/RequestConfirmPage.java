@@ -20,7 +20,7 @@ public class RequestConfirmPage extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if(v == buttonViewReal){
-            Intent intentRealTime = new Intent(this,MainActivity.class);
+            Intent intentRealTime = new Intent(this,RequestStatusPage.class);
             startActivity(intentRealTime);
 
     }

@@ -20,25 +20,16 @@
         tools:text="You have already accepted another request. Thank you! If you can no longer fill that request please cancel by clicking I Can't on that request before selecting a new request." />
 
     <Button
-        android:id="@+id/buttonNo"
+        android:id="@+id/buttonOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewAccept"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="140dp"
-        android:text="No"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="322dp"
-        tools:text="No" />
+        android:layout_marginStart="135dp"
+        android:layout_marginLeft="135dp"
+        android:layout_marginBottom="110dp"
+        android:text="Ok"
+        tools:text="Ok" />
 
-    <Button
-        android:id="@+id/buttonYes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/buttonNo"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="75dp"
-        android:layout_marginRight="75dp"
-        android:text="Yes" />
 </RelativeLayout>

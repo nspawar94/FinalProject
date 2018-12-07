@@ -1,6 +1,7 @@
 package com.example.nikhil.finalproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,15 @@ public class AcceptPage extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+
+        if (view == buttonNo) {
+            Intent intentRequestDashboard = new Intent(this, RequestDashboard.class);
+            startActivity(intentRequestDashboard);
+
+        } else if (view == buttonYes){
+            Intent intentRequestDashboard = new Intent(this, RequestDashboard.class);
+            startActivity(intentRequestDashboard);
+        }
 
     }
 }

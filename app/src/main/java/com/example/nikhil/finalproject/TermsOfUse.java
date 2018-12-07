@@ -1,6 +1,7 @@
 package com.example.nikhil.finalproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,15 @@ public class TermsOfUse extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+
+        if(v == buttonAgree) {
+            Intent intentDashboard = new Intent(this, RequestDashboard.class);
+            startActivity(intentDashboard);
+
+        } else if(v == buttonDisagree) {
+            Intent intentMain = new Intent (this,MainActivity.class);
+            startActivity(intentMain);
+        }
 
     }
 }
