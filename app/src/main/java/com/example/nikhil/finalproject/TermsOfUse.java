@@ -32,7 +32,7 @@ public class TermsOfUse extends Activity implements View.OnClickListener{
     public void onClick(View v) {
 
         if(v == buttonAgree) {
-            Intent intentDashboard = new Intent(this, RequestDashboard.class);
+            Intent intentDashboard = new Intent(this, HomePage.class);
             startActivity(intentDashboard);
 
         } else if(v == buttonDisagree) {
