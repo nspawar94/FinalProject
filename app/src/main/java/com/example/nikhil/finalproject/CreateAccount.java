@@ -71,6 +71,7 @@ public class CreateAccount extends Activity implements View.OnClickListener{
         final double age = Double.parseDouble(editTextAge.getText().toString());
         genderSelected = spinnerGender.getSelectedItem().toString();
         bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
+        //try
 
         if(v == buttonNext){
             /*if(password!=confirmPassword){
