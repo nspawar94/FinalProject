@@ -24,10 +24,8 @@ public class CreateAccount extends Activity implements View.OnClickListener{
     Button buttonNext;
     EditText editTextName, editTextLastName, editTextAge, editTextEMail, editTextPassword,editTextConfirmPassword;
     Spinner spinnerGender, spinnerBloodType;
-    String [] gender, bloodType;
     String genderSelected, bloodTypeSelected;
     private FirebaseAuth mAuth;
-// this is a comment, it is very good
 
 
     @Override
@@ -45,7 +43,7 @@ public class CreateAccount extends Activity implements View.OnClickListener{
 
         spinnerGender = (Spinner) findViewById(R.id.spinnerGender);
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(CreateAccount.this,
-                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.gender));
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.genders));
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(genderAdapter);
 
@@ -74,10 +72,12 @@ public class CreateAccount extends Activity implements View.OnClickListener{
         genderSelected = spinnerGender.getSelectedItem().toString();
         bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
 
+
         if(v == buttonNext){
-            if(password!=confirmPassword){
+            if(!password.equals(confirmPassword)){
                 Toast.makeText(this,"Please confirm password again",Toast.LENGTH_LONG).show();
             }else{
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -85,6 +85,7 @@ public class CreateAccount extends Activity implements View.OnClickListener{
                                 if (task.isSuccessful()) {
                                     User newUser = new User(fname,lname,genderSelected,bloodTypeSelected,age);
                                     myRef.push().setValue(newUser);
+
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Intent intentNext = new Intent(CreateAccount.this, TermsOfUse.class);
                                     startActivity(intentNext);
