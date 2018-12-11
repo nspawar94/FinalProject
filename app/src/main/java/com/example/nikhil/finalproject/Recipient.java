@@ -1,5 +1,8 @@
 package com.example.nikhil.finalproject;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Recipient {
     public String fname, lname, btype, location, story;
     public double age;
@@ -14,6 +17,7 @@ public class Recipient {
         this.story = story;
         this.age = age;
         this.recipientStatus = true;
+
     }
 
     public Recipient() {
@@ -25,5 +29,13 @@ public class Recipient {
 
     public boolean getRequestStatus(){
         return this.recipientStatus;
+    }
+
+    public void setEndDate(){
+
+    }
+
+    public Calendar getEndDate(){
+        return null;
     }
 }
