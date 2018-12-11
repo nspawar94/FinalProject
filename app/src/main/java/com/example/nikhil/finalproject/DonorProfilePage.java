@@ -47,7 +47,7 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
         initRecyclerView();
         geLocation();
     }
-    // test
+    // test2
 
     private void geLocation (){
 
