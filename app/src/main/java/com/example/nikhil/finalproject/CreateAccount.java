@@ -19,7 +19,7 @@ public class CreateAccount extends Activity implements View.OnClickListener{
     String [] gender, bloodType;
     String genderSelected, bloodTypeSelected;
     private FirebaseAuth mAuth;
-// this is a comment
+// this is a comment, it is very good
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
