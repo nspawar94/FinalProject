@@ -43,44 +43,13 @@ public class TermsOfUse extends Activity implements View.OnClickListener{
         final DatabaseReference myRef = database.getReference("User");
 
         if(v == buttonAgree) {
-
-            FirebaseUser user = mAuth.getCurrentUser();
-            String userEmail = user.getEmail();
-            myRef.orderByChild("email").equalTo(userEmail).addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    String editKey =dataSnapshot.getKey();
-                    User editStatus = dataSnapshot.getValue(User.class);
-                    editStatus.userStatus = true;
-                    myRef.child(editKey).child("status").setValue(editStatus.userStatus);
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-
             Intent intentDashboard = new Intent(this, HomePage.class);
             startActivity(intentDashboard);
 
         } else if(v == buttonDisagree) {
+            FirebaseUser user = mAuth.getCurrentUser();
+
+
             Intent intentMain = new Intent (this,MainActivity.class);
             startActivity(intentMain);
         }
