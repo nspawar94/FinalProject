@@ -19,7 +19,7 @@ public class CreateAccount extends Activity implements View.OnClickListener{
     String [] gender, bloodType;
     String genderSelected, bloodTypeSelected;
     private FirebaseAuth mAuth;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,20 +39,14 @@ public class CreateAccount extends Activity implements View.OnClickListener{
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(genderAdapter);
 
-
         spinnerBloodType = (Spinner) findViewById(R.id.spinnerBloodType);
         ArrayAdapter<String> bloodAdapter = new ArrayAdapter<String>(CreateAccount.this,
                 android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bloodType));
         bloodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerBloodType.setAdapter(bloodAdapter);
 
-
-
-
         buttonNext = findViewById(R.id.buttonNext);
         buttonNext.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -64,13 +58,12 @@ public class CreateAccount extends Activity implements View.OnClickListener{
         String password = editTextPassword.getText().toString();
         String confirmPassword = editTextConfirmPassword.getText().toString();
 
+        
         final String fname = editTextName.getText().toString();
         final String lname = editTextLastName.getText().toString();
         final double age = Double.parseDouble(editTextAge.getText().toString());
         genderSelected = spinnerGender.getSelectedItem().toString();
         bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
-
-
 
         if(v == buttonNext){
             if(password!=confirmPassword){
