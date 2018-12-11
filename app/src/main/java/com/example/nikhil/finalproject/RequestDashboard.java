@@ -42,7 +42,7 @@ public class RequestDashboard extends Activity implements View.OnClickListener {
     private void getRecipients() {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference recipientsmyRef = database.getReference("recipients");
+        DatabaseReference recipientsmyRef = database.getReference("Recipient");
 
         // Read from the database
         recipientsmyRef.addListenerForSingleValueEvent(new ValueEventListener() {
