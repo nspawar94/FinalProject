@@ -41,6 +41,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Spinner
+        android:id="@+id/spinnerBloodType"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextAge"
+        android:layout_below="@+id/editage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginLeft="101dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginBottom="0dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+
+    <Spinner
+        android:id="@+id/spinnerLocation"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextAge"
+        android:layout_below="@+id/editage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginLeft="101dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="0dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
     <EditText
         android:id="@+id/editfname"
         android:layout_width="wrap_content"
@@ -168,7 +199,7 @@
         android:layout_toRightOf="@+id/textView11"
         android:ems="10"
         android:hint="Enter Age"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -185,4 +216,6 @@
         android:layout_marginBottom="6dp"
         android:background="@android:color/holo_green_light"
         android:text="Submit Request" />
+
+
 </RelativeLayout>

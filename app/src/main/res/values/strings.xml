@@ -2,14 +2,14 @@
     <string name="app_name">FinalProject</string>
 
     <string-array name="genders">
-        <item>Please select gender</item>
+        <item>gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Other</item>
     </string-array>
 
     <string-array name="bloodType">
-        <item>Please select blood type</item>
+        <item>blood type</item>
         <item>A-</item>
         <item>A+</item>
         <item>B-</item>
@@ -20,5 +20,10 @@
         <item>O+</item>
     </string-array>
 
-
+    <string-array name="location">
+        <item>hospital name</item>
+        <item>Michigan Hospital</item>
+        <item>Ann Arbor Hospital</item>
+        <item>New York Hospital</item>
+    </string-array>
 </resources>

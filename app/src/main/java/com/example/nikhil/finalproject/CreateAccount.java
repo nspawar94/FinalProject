@@ -27,7 +27,6 @@ public class CreateAccount extends Activity implements View.OnClickListener{
     String genderSelected, bloodTypeSelected;
     private FirebaseAuth mAuth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +71,19 @@ public class CreateAccount extends Activity implements View.OnClickListener{
         genderSelected = spinnerGender.getSelectedItem().toString();
         bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
 
+        int checkBloodSelected, checkGenderSelected;
+
 
         if(v == buttonNext){
+            checkBloodSelected = spinnerBloodType.getSelectedItemPosition();
+            checkGenderSelected = spinnerGender.getSelectedItemPosition();
             if(!password.equals(confirmPassword)){
                 Toast.makeText(this,"Please confirm password again",Toast.LENGTH_LONG).show();
+            }else if(checkBloodSelected ==0) {
+                Toast.makeText(this,"Please select blood type",Toast.LENGTH_LONG).show();
+            }else if(checkGenderSelected==0) {
+                Toast.makeText(this,"Please select gender",Toast.LENGTH_LONG).show();
             }else{
-
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -99,7 +105,7 @@ public class CreateAccount extends Activity implements View.OnClickListener{
                         });
 
             }
-            }
+        }
 
 
 
