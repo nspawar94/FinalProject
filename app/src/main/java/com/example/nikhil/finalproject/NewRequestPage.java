@@ -112,7 +112,7 @@ public class NewRequestPage extends Activity implements View.OnClickListener {
                 locationSelected = spinnerLocation.getSelectedItem().toString();
 
                 Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age);
-                myRef.push().setValue(Recipient.class);
+                myRef.push().setValue(newRequest);
 
                 Intent intentRequestConfirmation = new Intent(this,RequestConfirmPage.class);
                 startActivity(intentRequestConfirmation);
