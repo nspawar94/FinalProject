@@ -30,15 +30,16 @@ public class CreateAccount extends Activity implements View.OnClickListener {
 
         spinnerGender = findViewById(R.id.spinnerGender);
         gender = new String[]{"male", "female", "other"};
+
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, gender);
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGender.setAdapter(genderAdapter);
+
         spinnerBloodType = findViewById(R.id.spinnerBloodType);
         bloodType = new String[]{"A-","A+","B-","B+","AB-","AB+","O-","O+"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, gender);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-
-
+        ArrayAdapter bloodAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, spinnerBloodType);
+        bloodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGender.setAdapter(bloodAdapter);
 
 
 
