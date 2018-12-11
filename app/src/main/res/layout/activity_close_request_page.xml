@@ -7,7 +7,7 @@
     tools:context=".CloseRequestPage">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewLocation"
         android:layout_width="258dp"
         android:layout_height="106dp"
         android:layout_alignParentTop="true"
