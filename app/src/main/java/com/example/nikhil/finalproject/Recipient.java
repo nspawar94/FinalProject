@@ -7,19 +7,28 @@ public class Recipient {
     public String fname, lname, btype, location, story;
     public double age;
     private boolean isOpen;
+    Date date;
 
-
-    public Recipient(String fname, String lname, String btype, String location, String story, double age) {
+    public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, Date date) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
         this.location = location;
         this.story = story;
         this.age = age;
-        this.isOpen = true;
-
+        this.isOpen = isOpen;
+        this.date = date;
     }
 
+
+
+    public Date getDate(){
+        return date;
+    }
+
+    public String getLocation(){
+        return location;
+    }
     public Recipient() {
     }
 
