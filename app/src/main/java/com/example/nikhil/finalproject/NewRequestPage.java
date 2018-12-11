@@ -41,7 +41,7 @@ public class NewRequestPage extends Activity implements View.OnClickListener {
 
         spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
         ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(NewRequestPage.this,
-                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.location);
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.location));
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLocation.setAdapter(locationAdapter);
 
