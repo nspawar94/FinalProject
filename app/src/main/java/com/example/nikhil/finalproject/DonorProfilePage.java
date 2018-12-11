@@ -34,6 +34,7 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
         switchDonationType.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
     }
+    // test
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
