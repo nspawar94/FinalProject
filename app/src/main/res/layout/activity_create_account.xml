@@ -233,6 +233,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="13dp"
-        android:text="Next"
+        android:text="Create Account"
         tools:ignore="UnknownId" />
 </RelativeLayout>

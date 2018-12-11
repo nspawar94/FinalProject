@@ -3,17 +3,22 @@ package com.example.nikhil.finalproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class CreateAccount extends Activity implements View.OnClickListener {
+public class CreateAccount extends Activity implements View.OnClickListener{
     Button buttonNext;
     EditText editTextName, editTextLastName, editTextAge, editTextEMail, editTextPassword,editTextConfirmPassword;
     Spinner spinnerGender, spinnerBloodType;
     String [] gender, bloodType;
+    String genderSelected, bloodTypeSelected;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -27,20 +32,20 @@ public class CreateAccount extends Activity implements View.OnClickListener {
         editTextEMail = findViewById(R.id.editTextEMail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
+        mAuth = FirebaseAuth.getInstance();
 
-        spinnerGender = findViewById(R.id.spinnerGender);
-        gender = new String[]{"male", "female", "other"};
-
-        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, gender);
+        spinnerGender = (Spinner) findViewById(R.id.spinnerGender);
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(CreateAccount.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.genders));
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(genderAdapter);
 
-        spinnerBloodType = findViewById(R.id.spinnerBloodType);
-        bloodType = new String[]{"A-","A+","B-","B+","AB-","AB+","O-","O+"};
-        ArrayAdapter bloodAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, spinnerBloodType);
-        bloodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerGender.setAdapter(bloodAdapter);
 
+        spinnerBloodType = (Spinner) findViewById(R.id.spinnerBloodType);
+        ArrayAdapter<String> bloodAdapter = new ArrayAdapter<String>(CreateAccount.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bloodType));
+        bloodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerBloodType.setAdapter(bloodAdapter);
 
 
 
@@ -53,9 +58,49 @@ public class CreateAccount extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-            if(v == buttonNext){
-                Intent intentNext = new Intent(this,TermsOfUse.class);
-                startActivity(intentNext);
-            }}
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("User");
+
+        String email = editTextEMail.getText().toString();
+        String password = editTextPassword.getText().toString();
+        String confirmPassword = editTextConfirmPassword.getText().toString();
+
+        final String fname = editTextName.getText().toString();
+        final String lname = editTextLastName.getText().toString();
+        final double age = Double.parseDouble(editTextAge.getText().toString());
+        genderSelected = spinnerGender.getSelectedItem().toString();
+        bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
+
+
+
+        if(v == buttonNext){
+            if(password!=confirmPassword){
+                Toast.makeText(this,"Please confirm password again",Toast.LENGTH_LONG).show();
+            }else{
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    User newUser = new User(fname,lname,genderSelected,bloodTypeSelected,age);
+                                    myRef.push().setValue(newUser);
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    Intent intentNext = new Intent(CreateAccount.this, TermsOfUse.class);
+                                    startActivity(intentNext);
+                                } else {
+                                    Toast.makeText(CreateAccount.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+
+                                // ...
+                            }
+                        });
+
+            }
+            }
+
+
 
     }
+
+}

@@ -2,10 +2,10 @@ package com.example.nikhil.finalproject;
 
 public class User {
 
-    String fname, lname, gender, btype;
-    int age;
+    public String fname, lname, gender, btype;
+    public double age;
 
-    public User(String fname, String lname, String gender, String btype, int age) {
+    public User(String fname, String lname, String gender, String btype, double age) {
         this.fname = fname;
         this.lname = lname;
         this.gender = gender;
@@ -15,4 +15,7 @@ public class User {
 
     public User() {
     }
+
+
+
 }
