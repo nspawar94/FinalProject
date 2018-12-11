@@ -3,14 +3,21 @@ package com.example.nikhil.finalproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class RequestDashboard extends Activity implements View.OnClickListener {
     Button buttonAccept1, buttonAccept2, buttonCant1, buttonCant2;
+
+    private ArrayList<Recipient> recipients;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,14 @@ public class RequestDashboard extends Activity implements View.OnClickListener {
         buttonAccept2.setOnClickListener(this);
         buttonCant1.setOnClickListener(this);
         buttonCant2.setOnClickListener(this);
+
+    }
+
+    private void initRecyclerView(){
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(recipients, this);
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
