@@ -73,16 +73,19 @@ public class CreateAccount extends Activity implements View.OnClickListener{
         bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
 
         if(v == buttonNext){
-            if(password!=confirmPassword){
+            /*if(password!=confirmPassword){
                 Toast.makeText(this,"Please confirm password again",Toast.LENGTH_LONG).show();
             }else{
+            */
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     User newUser = new User(fname,lname,genderSelected,bloodTypeSelected,age);
+                                    newUser.userStatus = false;
                                     myRef.push().setValue(newUser);
+
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Intent intentNext = new Intent(CreateAccount.this, TermsOfUse.class);
                                     startActivity(intentNext);
