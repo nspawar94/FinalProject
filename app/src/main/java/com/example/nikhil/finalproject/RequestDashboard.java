@@ -5,40 +5,73 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class RequestDashboard extends Activity implements View.OnClickListener {
-    Button buttonAccept1, buttonAccept2, buttonCant1, buttonCant2;
+
 
     private ArrayList<Recipient> recipients;
+    private RecyclerViewAdapter recyclerViewAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_dashboard);
+        recipients = new ArrayList<>();
+        initRecyclerView();
+        getRecipients();
 
-        buttonAccept1 = findViewById(R.id.buttonAccept1);
-        buttonAccept2 = findViewById(R.id.buttonAccept2);
-        buttonCant1 = findViewById(R.id.buttonCant1);
-        buttonCant2 = findViewById(R.id.buttonCant2);
 
-        buttonAccept1.setOnClickListener(this);
-        buttonAccept2.setOnClickListener(this);
-        buttonCant1.setOnClickListener(this);
-        buttonCant2.setOnClickListener(this);
 
     }
 
+    private void getRecipients() {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference recipientsmyRef = database.getReference("recipients");
+
+        // Read from the database
+        recipientsmyRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+               for(DataSnapshot child : dataSnapshot.getChildren()){
+                   Recipient recipient = child.getValue(Recipient.class);
+                   recipients.add(recipient);
+               }
+               recyclerViewAdapter.notifyDataSetChanged();;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+
+
+    }
+
+
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(recipients, this);
+        recyclerViewAdapter = new RecyclerViewAdapter(recipients, this);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
