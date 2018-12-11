@@ -2,14 +2,22 @@ package com.example.nikhil.finalproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -18,6 +26,8 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
    Button buttonAddNewDonation, switchDonationType, buttonDelete;
 
    private ArrayList <Donor> Location;
+   private recycleviewDonorProfile recycleviewDonorProfile;
+
 
 
 
@@ -33,8 +43,51 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
         buttonAddNewDonation.setOnClickListener(this);
         switchDonationType.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
+        Location = new ArrayList<>();
+        initRecyclerView();
+        geLocation();
     }
-    // test
+    // test2
+
+    private void geLocation (){
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference LocationRef = database.getReference("Donor");
+
+        LocationRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                for (DataSnapshot child: dataSnapshot.getChildren()){
+                    Donor donor = child.getValue(Donor.class);
+                    Location.add(donor);
+
+                }
+                recycleviewDonorProfile.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+
+
+    }
+
+    private void initRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.recycleViewDonorProfile);
+        recycleviewDonorProfile = new recycleviewDonorProfile(Location, this);
+        recyclerView.setAdapter(recycleviewDonorProfile);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,12 +136,5 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
 
     }
 
-    private void initRecyclerView() {
-        RecyclerView recyclerView = findViewById(R.id.recycleViewDonorProfile);
-        recycleviewDonorProfile recycleviewDonorProfile = new recycleviewDonorProfile(Location, this);
-        recyclerView.setAdapter(recycleviewDonorProfile);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-    }
 }

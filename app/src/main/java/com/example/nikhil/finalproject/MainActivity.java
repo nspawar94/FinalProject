@@ -47,9 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intentSignUp);
 
     }else if(v == buttonSignIn){
-            {
-
-                mAuth.signInWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
+            {mAuth.signInWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {

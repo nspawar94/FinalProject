@@ -12,6 +12,7 @@ public class User {
         this.gender = gender;
         this.btype = btype;
         this.age = age;
+        this.userStatus = false;
     }
 
     public User() {

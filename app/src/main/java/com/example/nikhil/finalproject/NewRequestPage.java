@@ -6,12 +6,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class NewRequestPage extends Activity implements View.OnClickListener {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+public class NewRequestPage extends Activity implements View.OnClickListener {
+    EditText editTextfname ,editTextlname, editTextcomment, editTextAge;
+    double age;
+    String bloodTypeSelected,locationSelected;
     Button buttonSubmit;
+    Spinner spinnerBloodType,spinnerLocation;
 
 
     @Override
@@ -19,8 +28,24 @@ public class NewRequestPage extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_request_page);
 
-        buttonSubmit = findViewById(R.id.buttonSubmit);
+        editTextfname=findViewById(R.id.editfname);
+        editTextlname=findViewById(R.id.editlname);
+        editTextcomment=findViewById(R.id.editstory);
+        editTextAge=findViewById(R.id.editage);
 
+        spinnerBloodType = (Spinner) findViewById(R.id.spinnerBloodType);
+        ArrayAdapter<String> bloodTypeAdapter = new ArrayAdapter<String>(NewRequestPage.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.bloodType));
+        bloodTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerBloodType.setAdapter(bloodTypeAdapter);
+
+        spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
+        ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(NewRequestPage.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.location));
+        locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLocation.setAdapter(locationAdapter);
+
+        buttonSubmit = findViewById(R.id.buttonSubmit);
         buttonSubmit.setOnClickListener(this);
 
     }
@@ -64,10 +89,35 @@ public class NewRequestPage extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("Recipient");
+
+        String fname = editTextfname.getText().toString();
+        String lname = editTextlname.getText().toString();
+        String story = editTextcomment.getText().toString();
+        age = Double.parseDouble(editTextAge.getText().toString());
+
+        int checkBloodSelected,checkLocationSelected;
 
         if (v == buttonSubmit){
-            Intent intentRequestConfirmation = new Intent(this,RequestConfirmPage.class);
-            startActivity(intentRequestConfirmation);
+            checkBloodSelected = spinnerBloodType.getSelectedItemPosition();
+            checkLocationSelected = spinnerLocation.getSelectedItemPosition();
+            if(checkBloodSelected ==0){
+                Toast.makeText(this,"Please select blood type",Toast.LENGTH_LONG).show();
+
+            }else if(checkLocationSelected ==0){
+                Toast.makeText(this,"Please select hospital location",Toast.LENGTH_LONG).show();
+            }else{
+                bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
+                locationSelected = spinnerLocation.getSelectedItem().toString();
+
+                Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age);
+
+                Intent intentRequestConfirmation = new Intent(this,RequestConfirmPage.class);
+                startActivity(intentRequestConfirmation);
+            }
+
+
         }
 
     }
