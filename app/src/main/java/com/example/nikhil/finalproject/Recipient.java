@@ -6,7 +6,7 @@ import java.util.Date;
 public class Recipient {
     public String fname, lname, btype, location, story;
     public double age;
-    private boolean recipientStatus;
+    private boolean isOpen;
 
 
     public Recipient(String fname, String lname, String btype, String location, String story, double age) {
@@ -16,7 +16,7 @@ public class Recipient {
         this.location = location;
         this.story = story;
         this.age = age;
-        this.recipientStatus = true;
+        this.isOpen = true;
 
     }
 
@@ -24,11 +24,11 @@ public class Recipient {
     }
 
     public void closeRequest(){
-        this.recipientStatus = false;
+        this.isOpen = false;
     }
 
     public boolean getRequestStatus(){
-        return this.recipientStatus;
+        return this.isOpen;
     }
 
     public void setEndDate(){
