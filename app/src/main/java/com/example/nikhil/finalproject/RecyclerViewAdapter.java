@@ -42,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intentAccept = new Intent(mContext, AcceptPage.class);
-                recipientinfo = "hi";
+                recipientinfo = "hi"; //change this to get recipient info which is clicked
                 intentAccept.putExtra("text_value", recipientinfo);
                 mContext.startActivity(intentAccept);
             }
