@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class ManualDonationPage extends Activity implements View.OnClickListener {
@@ -94,7 +95,9 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
             if (checkLocationSelected == 0) {
                 Toast.makeText(this,"Please choose location",Toast.LENGTH_LONG).show();
             }else{
+                createdDate = Calendar.getInstance().getTime();
                 Donor newDonation = new Donor(createdDate,location);
+                myRef.push().setValue(newDonation);
                 Intent intentProfile = new Intent(this,DonorProfilePage.class);
                 startActivity(intentProfile);
             }

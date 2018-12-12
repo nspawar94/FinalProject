@@ -6,7 +6,7 @@ import java.util.Date;
 public class Recipient {
     public String fname, lname, btype, location, story;
     public double age;
-    private boolean isOpen;
+    private boolean isOpen,isAccepted;
     Date date;
 
     //trying weeee
@@ -20,14 +20,18 @@ public class Recipient {
         this.location = location;
         this.story = story;
         this.age = age;
-        this.isOpen = isOpen;
-        this.date = date;
+        this.isOpen = true;
+        this.isAccepted = false;
     }
 
     public Recipient() {
         }
 
-
+    public void setAccepted(boolean b){
+        if(b == true){
+            this.isAccepted = true;
+        }else this.isAccepted = false;
+    }
 
     public Date getDate(){
         return date;
@@ -47,7 +51,8 @@ public class Recipient {
     public void setCurrentDate(){
         this.date = Calendar.getInstance().getTime();
     }
-    
+
+
     public Calendar getEndDate(){
         return null;
     }
