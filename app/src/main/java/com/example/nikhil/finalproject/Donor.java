@@ -1,6 +1,7 @@
 package com.example.nikhil.finalproject;
 
 import java.util.Date;
+//
 
 public class Donor {
     String location;
