@@ -3,6 +3,8 @@ package com.example.nikhil.finalproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -12,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,9 +26,10 @@ import java.util.ArrayList;
 
 public class HomePage extends Activity implements View.OnClickListener{
     Button buttonNewRequest, buttonDonationHomepage, buttonCurrentRequest;
-    TextView textViewRequestAccept;
+    TextView textViewAcptDetail;
     private ArrayList<Recipient> recipients;
     private HomePageRecycler recyclerViewAdapter;
+    private FirebaseAuth mAuth;
 
 
 
@@ -36,14 +41,61 @@ public class HomePage extends Activity implements View.OnClickListener{
         recipients = new ArrayList<>();
         initRecyclerView();
         getRecipients();
+        getAcceptDetail();
 
         buttonNewRequest = findViewById(R.id.buttonNewRequest);
         buttonDonationHomepage = findViewById(R.id.buttonDonationHomePage);
         buttonCurrentRequest = findViewById(R.id.buttonCurrentRequest);
 
+        textViewAcptDetail = findViewById(R.id.textViewAcptDetail);
+
         buttonNewRequest.setOnClickListener(this);
         buttonDonationHomepage.setOnClickListener(this);
         buttonCurrentRequest.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+
+    }
+
+    private void getAcceptDetail(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference acceptDetailmyRef = database.getReference("Recipient");
+
+        String showAcceptEmail = mAuth.getCurrentUser().getEmail();
+        Boolean showAcceptisOpen = Boolean.TRUE;
+        Boolean showAcceptisAccept = Boolean.TRUE;
+
+
+        acceptDetailmyRef.orderByChild("donorEmail").equalTo(showAcceptEmail).orderByChild("isOpen").equalTo(showAcceptisOpen).orderByChild("isAccepted").equalTo(showAcceptisAccept).limitToLast(1).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String showacceptKey = dataSnapshot.getKey();
+
+                Recipient showacceptRecipient = dataSnapshot.getValue(Recipient.class);
+                textViewAcptDetail.setText("Location: " + showacceptRecipient.location + "\nPatient Name: " + showacceptRecipient.fname);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
