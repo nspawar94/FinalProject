@@ -28,7 +28,7 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
    TextView textViewGenDonation, textViewEmerDonation;
 
 
-   private ArrayList <Donor> Location;
+   private ArrayList <Donor> donorHistory;
    private recycleviewDonorProfile recycleviewDonorProfile;
 
 
@@ -46,7 +46,7 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
 
         buttonAddNewDonation.setOnClickListener(this);
 
-        Location = new ArrayList<>();
+        donorHistory = new ArrayList<>();
         initRecyclerView();
         geLocation();
     }
@@ -64,7 +64,7 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
                 String value = dataSnapshot.getValue(String.class);
                 for (DataSnapshot child: dataSnapshot.getChildren()){
                     Donor donor = child.getValue(Donor.class);
-                    Location.add(donor);
+                    donorHistory.add(donor);
 
                 }
                 recycleviewDonorProfile.notifyDataSetChanged();
@@ -83,7 +83,7 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recycleViewDonorProfile);
-        recycleviewDonorProfile = new recycleviewDonorProfile(Location, this);
+        recycleviewDonorProfile = new recycleviewDonorProfile(donorHistory, this);
         recyclerView.setAdapter(recycleviewDonorProfile);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

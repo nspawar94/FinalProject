@@ -16,17 +16,15 @@ import java.util.ArrayList;
 
 public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDonorProfile.ViewHolder> {
     //data VDO 12:34 min
-    private ArrayList<Donor> Location;
+    private ArrayList<Donor> donorHistory;
+
     private Context mContext;
 
-    recycleviewDonorProfile(ArrayList<Donor> Location, Context mContext){
-        this.Location = Location;
+    recycleviewDonorProfile(ArrayList<Donor> donorHistory, Context mContext){
+        this.donorHistory = donorHistory;
         this.mContext = mContext;
 
-
-
     }
-
 
     @NonNull
     @Override
@@ -40,28 +38,42 @@ public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDon
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.textViewQueryHistory.setText(Location.get(i).location);
+        viewHolder.textViewDntLocation.setText(donorHistory.get(i).getLocation());
+        viewHolder.textViewDntDate.setText(donorHistory.get(i).getDonateType());
+        //viewHolder.textViewDntDate.setText(donorHistory.get(i).getCreatedDate());
+        viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // put delete function here ?
 
-        //if need toast and clickable: VDO 17:35
+
+            }
+        });
+
+
+        //if need toast and clickable: VDO 17:00
     }
 
     @Override
     public int getItemCount() {
-        return Location.size();
+
+        return donorHistory.size();
+
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         Button buttonDelete;
-        TextView textViewQueryCount, textViewQueryHistory;
+        TextView textViewCount, textViewDntLocation, textViewDntDate, textViewDntType;
         RelativeLayout parentLayout;
-
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
-            textViewQueryCount = itemView.findViewById(R.id.textViewQueryCount);
-            textViewQueryHistory = itemView.findViewById(R.id.textViewQueryHistory);
+            textViewCount = itemView.findViewById(R.id.textViewCount);
+            textViewDntLocation = itemView.findViewById(R.id.textViewDntLocation);
+            textViewDntDate = itemView.findViewById(R.id.textViewDntDate);
+            textViewDntType = itemView.findViewById(R.id.textViewDntType);
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
 

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:id="@+id/parent_layout" android:padding="30dp">
+    android:id="@+id/parent_layout" android:padding="15dp">
 
 
     <Button
@@ -16,7 +16,7 @@
         android:text="Delete" />
 
     <TextView
-        android:id="@+id/textViewQueryCount"
+        android:id="@+id/textViewCount"
         android:layout_width="wrap_content"
         android:layout_height="65dp"
         android:layout_alignParentStart="true"
@@ -24,18 +24,48 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="3dp"
         android:text="#000"
+        android:textSize="17sp"
         tools:text="Count" />
 
     <TextView
-        android:id="@+id/textViewQueryHistory"
+        android:id="@+id/textViewDntLocation"
         android:layout_width="167dp"
-        android:layout_height="65dp"
-        android:layout_alignBottom="@+id/textViewQueryCount"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/textViewCount"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginBottom="23dp"
+        android:layout_toRightOf="@+id/textViewCount"
+        android:text="#000"
+        android:textSize="17sp"
+        tools:text="Donate Location" />
+
+    <TextView
+        android:id="@+id/textViewDntDate"
+        android:layout_width="167dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/textViewCount"
         android:layout_marginStart="9dp"
         android:layout_marginLeft="9dp"
         android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/textViewQueryCount"
-        android:layout_toRightOf="@+id/textViewQueryCount"
+        android:layout_toEndOf="@+id/textViewCount"
+        android:layout_toRightOf="@+id/textViewCount"
         android:text="#000"
-        tools:text="History" />
+        android:textSize="17sp"
+        tools:text="Donate Date" />
+
+    <TextView
+        android:id="@+id/textViewDntType"
+        android:layout_width="167dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/textViewCount"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/textViewCount"
+        android:layout_toRightOf="@+id/textViewCount"
+        android:text="#000"
+        android:textSize="17sp"
+        tools:text="Donate Type" />
+
 </RelativeLayout>
