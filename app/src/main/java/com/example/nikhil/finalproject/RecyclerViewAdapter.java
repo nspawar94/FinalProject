@@ -34,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.textViewLocation.setText(recipients.get(i).getLocation());
-        viewHolder.textViewPosting.setText(DateFormat.format(recipients.get(i).getDate()));
+        viewHolder.textViewPosting.setText(recipients.get(i).getDate().toString());
 
 
     }
