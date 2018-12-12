@@ -11,13 +11,16 @@ public class Donor {
     public String location;
     //Boolean isManual;// manual vs urgent
     public String donateType;
+    public String donorEmail;
 
     public Donor() {
     }
 
-    public Donor(String location, String donateType) {
+    public Donor(String location, String donateType, String donorEmail) {
         this.location = location;
         this.donateType = donateType;
+        this.donorEmail = donorEmail;
+
     }
 
     // public Date getCreatedDate(){
@@ -31,6 +34,11 @@ public class Donor {
 
     public String getDonateType (){
         return this.donateType;
+    }
+
+    public String getDonorEmail(){
+
+        return this.donorEmail;
     }
 
 
