@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DonorProfilePage">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="246dp"
-        android:text="Donation History"
-        android:textSize="18sp" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="63dp"
@@ -40,20 +27,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="246dp"
+        android:layout_marginTop="240dp"
         android:text="Donation History"
         android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/textViewGenDonation2"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textViewRequest"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="36dp"
-        android:layout_toEndOf="@+id/textView7"
-        android:textSize="18sp"
-        tools:text="count" />
 
     <TextView
         android:id="@+id/textView7"
@@ -64,7 +40,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginStart="307dp"
         android:layout_marginLeft="307dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:text=":"
         android:textSize="18sp" />
 
@@ -99,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="182dp"
         android:text="(+) Add new donation" />
 
     <TextView
@@ -111,7 +87,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="103dp"
         android:layout_marginLeft="103dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="85dp"
         android:text="Donation Statistics"
         android:textAllCaps="false"
         android:textSize="18sp" />
@@ -138,7 +114,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="124dp"
         android:layout_marginLeft="124dp"
-        android:layout_marginTop="146dp"
+        android:layout_marginTop="139dp"
         android:text="+ Emergency Donation"
         android:textSize="18sp" />
 
@@ -153,10 +129,21 @@
         android:textSize="18sp"
         tools:text="count" />
 
+    <TextView
+        android:id="@+id/textViewEmerDonation"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewRequest"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="28dp"
+        android:layout_toEndOf="@+id/textView7"
+        android:textSize="18sp"
+        tools:text="count" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleViewDonorProfile"
-        android:layout_width="339dp"
-        android:layout_height="167dp"
+        android:layout_width="340dp"
+        android:layout_height="219dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
@@ -168,47 +155,12 @@
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textViewGenDonation2"
+        android:layout_alignTop="@+id/textViewGenDonation"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="-52dp"
-        android:layout_marginEnd="292dp"
-        android:layout_marginRight="292dp"
+        android:layout_marginTop="-17dp"
+        android:layout_marginEnd="293dp"
+        android:layout_marginRight="293dp"
         android:src="@mipmap/ic_launcher_round" />
-
-    <Switch
-        android:id="@+id/switchDonationType"
-        android:layout_width="52dp"
-        android:layout_height="38dp"
-        android:layout_below="@+id/textView9"
-        android:layout_marginStart="-3dp"
-        android:layout_marginTop="6dp"
-        android:layout_toEndOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginBottom="206dp"
-        android:text="General Donation"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="225dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginBottom="205dp"
-        android:text="Emergency Donations"
-        android:textSize="14sp" />
 
 </RelativeLayout>

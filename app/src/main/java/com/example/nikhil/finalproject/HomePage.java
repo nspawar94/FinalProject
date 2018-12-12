@@ -7,20 +7,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomePage extends Activity implements View.OnClickListener{
-    Button buttonNewRequest, buttonNewDonation, buttonCurrentRequest;
+    Button buttonNewRequest, buttonDonationHomepage, buttonCurrentRequest;
+    TextView textViewRequestAccept;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         buttonNewRequest = findViewById(R.id.buttonNewRequest);
-        buttonNewDonation = findViewById(R.id.buttonNewDonation);
+        buttonDonationHomepage = findViewById(R.id.buttonDonationHomePage);
         buttonCurrentRequest = findViewById(R.id.buttonCurrentRequest);
+
         buttonNewRequest.setOnClickListener(this);
-        buttonNewDonation.setOnClickListener(this);
+        buttonDonationHomepage.setOnClickListener(this);
         buttonCurrentRequest.setOnClickListener(this);
 
     }
@@ -70,8 +74,8 @@ public class HomePage extends Activity implements View.OnClickListener{
 
             Intent i = new Intent(this,NewRequestPage.class);
             this.startActivity(i);
-        }else if(v==buttonNewDonation){
-            Intent i = new Intent(this,ManualDonationPage.class);
+        }else if(v==buttonDonationHomepage){
+            Intent i = new Intent(this,DonorProfilePage.class);
             this.startActivity(i);
         }else if(v==buttonCurrentRequest){
             Intent i = new Intent(this, RequestDashboard.class);

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class DonorProfilePage extends Activity implements View.OnClickListener{
 
-   Button buttonAddNewDonation, switchDonationType, buttonDelete;
+   Button buttonAddNewDonation, buttonDelete;
 
    private ArrayList <Donor> Location;
    private recycleviewDonorProfile recycleviewDonorProfile;
@@ -37,11 +37,9 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_donor_profile_page);
 
         buttonAddNewDonation = findViewById(R.id.buttonAddNewDonation);
-        switchDonationType = findViewById(R.id.switchDonationType);
         buttonDelete = findViewById(R.id.buttonDelete);
 
         buttonAddNewDonation.setOnClickListener(this);
-        switchDonationType.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
         Location = new ArrayList<>();
         initRecyclerView();
