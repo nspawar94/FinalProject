@@ -23,6 +23,7 @@ public class AcceptPage extends Activity implements View.OnClickListener{
 
     Button buttonYes, buttonNo;
     private FirebaseAuth mAuth;
+    String recipientinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,10 @@ public class AcceptPage extends Activity implements View.OnClickListener{
 
         buttonNo.setOnClickListener(this);
         buttonYes.setOnClickListener(this);
+
+        recipientinfo =  getIntent().getStringExtra("text_value");
     }
+
 
     @Override
     public void onClick(View view) {
