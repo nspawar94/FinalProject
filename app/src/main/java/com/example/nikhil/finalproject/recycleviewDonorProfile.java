@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDonorProfile.ViewHolder> {
     //data VDO 12:34 min
     private ArrayList<Donor> donorHistory;
-
     private Context mContext;
 
     recycleviewDonorProfile(ArrayList<Donor> donorHistory, Context mContext){
@@ -25,30 +24,20 @@ public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDon
         this.mContext = mContext;
 
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_donorprofilelist, viewGroup,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
-
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.textViewDntLocation.setText(donorHistory.get(i).getLocation());
-        viewHolder.textViewDntType.setText(donorHistory.get(i).getDonateType());
+        //viewHolder.textViewDntType.setText(donorHistory.get(i).getDonateType());
         //viewHolder.textViewDntDate.setText(donorHistory.get(i).getCreatedDate());
-        viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // put delete function here ?
-
-
-            }
-        });
+        //viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
 
 
         //if need toast and clickable: VDO 17:00

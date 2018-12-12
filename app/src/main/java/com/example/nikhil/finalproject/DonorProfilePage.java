@@ -26,10 +26,8 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
 
    Button buttonAddNewDonation;
    TextView textViewGenDonation, textViewEmerDonation;
-
-
    private ArrayList <Donor> donorHistory;
-   private recycleviewDonorProfile recycleviewDonorProfile;
+   private recycleviewDonorProfile recycleviewDonorProfilev;
 
 
 
@@ -48,26 +46,26 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
 
         donorHistory = new ArrayList<>();
         initRecyclerView();
-        geLocation();
+        getLocation();
     }
 
-    private void geLocation (){
+    private void getLocation (){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference LocationRef = database.getReference("Donor");
+        DatabaseReference locationRef = database.getReference("Donor");
 
-        LocationRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        locationRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
+                //String value = dataSnapshot.getValue(String.class);
                 for (DataSnapshot child: dataSnapshot.getChildren()){
                     Donor donor = child.getValue(Donor.class);
                     donorHistory.add(donor);
 
                 }
-                recycleviewDonorProfile.notifyDataSetChanged();
+                recycleviewDonorProfilev.notifyDataSetChanged();
             }
 
             @Override
@@ -83,8 +81,8 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recycleViewDonorProfile);
-        recycleviewDonorProfile = new recycleviewDonorProfile(donorHistory, this);
-        recyclerView.setAdapter(recycleviewDonorProfile);
+        recycleviewDonorProfilev = new recycleviewDonorProfile(donorHistory, this);
+        recyclerView.setAdapter(recycleviewDonorProfilev);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 

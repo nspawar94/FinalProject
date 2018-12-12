@@ -23,7 +23,7 @@ import java.util.Date;
 public class ManualDonationPage extends Activity implements View.OnClickListener {
 
     Button buttonShowDate,buttonClear, buttonSubmit;
-    String location;
+    String location, donateType;
     Spinner spinnerLocation;
 
     @Override
@@ -98,6 +98,11 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
                 //createdDate = Calendar.getInstance().getTime();
                 //Donor newDonation = new Donor(createdDate,location);
                 //myRef.push().setValue(newDonation);
+
+                String locationSelected = spinnerLocation.getSelectedItem().toString();
+                Donor newDonation = new Donor(locationSelected, "General");
+                myRef.push().setValue(newDonation);
+
                 Intent intentProfile = new Intent(this,DonorProfilePage.class);
                 startActivity(intentProfile);
             }
