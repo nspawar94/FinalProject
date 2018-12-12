@@ -95,14 +95,16 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
             if (checkLocationSelected == 0) {
                 Toast.makeText(this,"Please choose location",Toast.LENGTH_LONG).show();
             }else{
-                createdDate = Calendar.getInstance().getTime();
-                Donor newDonation = new Donor(createdDate,location);
-                myRef.push().setValue(newDonation);
+                //createdDate = Calendar.getInstance().getTime();
+                //Donor newDonation = new Donor(createdDate,location);
+                //myRef.push().setValue(newDonation);
                 Intent intentProfile = new Intent(this,DonorProfilePage.class);
                 startActivity(intentProfile);
             }
 
-        }else if(view==buttonClear){
+
+
+        }else if(view == buttonClear){
             Intent intentRefresh = new Intent(this,ManualDonationPage.class);
             startActivity(intentRefresh);
         }else if(view == buttonShowDate){

@@ -47,8 +47,7 @@ public class TermsOfUse extends Activity implements View.OnClickListener{
             startActivity(intentDashboard);
 
         } else if(v == buttonDisagree) {
-            //need something to delete
-
+            //user.delete();
             Intent intentMain = new Intent (this,MainActivity.class);
             startActivity(intentMain);
         }
