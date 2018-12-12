@@ -23,6 +23,7 @@ public class AcceptPage extends Activity implements View.OnClickListener{
 
     Button buttonYes, buttonNo;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +62,11 @@ public class AcceptPage extends Activity implements View.OnClickListener{
                     myRef.child(editKey).child("donorEmail").setValue(editDonorEmail);
 
 
-                   Date createdDate = Calendar.getInstance().getTime();
                     String location = findR.getLocation();
                     String donateType = "urgent";
-                    Donor urgentDonor = new Donor(location,donateType);
-                   myRef2.push().setValue(urgentDonor);
+
+                    Donor urgentDonor = new Donor(location,donateType,editDonorEmail);
+                    myRef2.push().setValue(urgentDonor);
                 }
 
                 @Override

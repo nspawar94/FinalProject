@@ -1,6 +1,7 @@
 package com.example.nikhil.finalproject;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -12,32 +13,43 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ManualDonationPage extends Activity implements View.OnClickListener {
+public class ManualDonationPage extends Activity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     Button buttonShowDate,buttonClear, buttonSubmit;
     String location, donateType;
     Spinner spinnerLocation;
+    private FirebaseAuth mAuth;
+    TextView textViewShowDay;
+
+    int day, month, year;
+    int dayFinal, monthFinal, yearFinal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_donation_page);
+        mAuth = FirebaseAuth.getInstance();
 
-        buttonShowDate = findViewById(R.id.buttonShowDate);
+        buttonShowDate = findViewById(R.id.buttonDatePicker);
         buttonClear = findViewById(R.id.buttonClear);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
         buttonClear.setOnClickListener(this);
         buttonSubmit.setOnClickListener(this);
         buttonShowDate.setOnClickListener(this);
+
+        textViewShowDay = findViewById(R.id.textViewShowDate);
 
         spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
         ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(ManualDonationPage.this,
@@ -95,12 +107,10 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
             if (checkLocationSelected == 0) {
                 Toast.makeText(this,"Please choose location",Toast.LENGTH_LONG).show();
             }else{
-                //createdDate = Calendar.getInstance().getTime();
-                //Donor newDonation = new Donor(createdDate,location);
-                //myRef.push().setValue(newDonation);
 
                 String locationSelected = spinnerLocation.getSelectedItem().toString();
-                Donor newDonation = new Donor(locationSelected, "General");
+                String donorEmail = mAuth.getCurrentUser().getEmail();
+                Donor newDonation = new Donor(locationSelected, "General", donorEmail);
                 myRef.push().setValue(newDonation);
 
                 Intent intentProfile = new Intent(this,DonorProfilePage.class);
@@ -110,11 +120,28 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
 
 
         }else if(view == buttonClear){
-            Intent intentRefresh = new Intent(this,ManualDonationPage.class);
+            Intent intentRefresh = new Intent(this,DonorProfilePage.class);
             startActivity(intentRefresh);
         }else if(view == buttonShowDate){
+            Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DATE);
 
+            DatePickerDialog datePickerDialog = new DatePickerDialog(ManualDonationPage.this,ManualDonationPage.this,year, month,day);
+            datePickerDialog.show();
         }
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        yearFinal = year;
+        monthFinal = month;
+        dayFinal = dayOfMonth;
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.DATE,dayFinal);
 
     }
 }
