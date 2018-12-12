@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -142,6 +143,10 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
 
         Calendar c = Calendar.getInstance();
         c.set(Calendar.DATE,dayFinal);
+        c.set(Calendar.MONTH,monthFinal);
+        c.set(Calendar.YEAR,yearFinal);
+        String chosenDate = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        textViewShowDay.setText(chosenDate);
 
     }
 }
