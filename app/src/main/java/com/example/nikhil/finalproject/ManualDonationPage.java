@@ -103,8 +103,8 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
             }
 
         }else if(view==buttonClear){
-            Intent intentRefresh = new Intent(this,ManualDonationPage.class);
-            startActivity(intentRefresh);
+            Intent intentReturn = new Intent(this,DonorProfilePage.class);
+            startActivity(intentReturn);
         }else if(view == buttonShowDate){
 
         }

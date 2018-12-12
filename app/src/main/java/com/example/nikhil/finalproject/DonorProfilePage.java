@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,9 @@ import java.util.ArrayList;
 
 public class DonorProfilePage extends Activity implements View.OnClickListener{
 
-   Button buttonAddNewDonation, buttonDelete;
+   Button buttonAddNewDonation;
+   TextView textViewGenDonation, textViewEmerDonation;
+
 
    private ArrayList <Donor> Location;
    private recycleviewDonorProfile recycleviewDonorProfile;
@@ -37,15 +40,16 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_donor_profile_page);
 
         buttonAddNewDonation = findViewById(R.id.buttonAddNewDonation);
-        buttonDelete = findViewById(R.id.buttonDelete);
+        textViewGenDonation = findViewById(R.id.textViewGenDonation);
+        textViewEmerDonation = findViewById(R.id.textViewEmerDonation);
+
 
         buttonAddNewDonation.setOnClickListener(this);
-        buttonDelete.setOnClickListener(this);
+
         Location = new ArrayList<>();
         initRecyclerView();
         geLocation();
     }
-    // test2/
 
     private void geLocation (){
 
