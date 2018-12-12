@@ -33,6 +33,7 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
     private FirebaseAuth mAuth;
     TextView textViewShowDay;
 
+    
     int day, month, year;
     int dayFinal, monthFinal, yearFinal;
 
