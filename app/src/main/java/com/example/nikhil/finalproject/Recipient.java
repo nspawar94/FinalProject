@@ -49,6 +49,7 @@ public class Recipient {
     }
 
     public void setCurrentDate(){
+        Calendar cal = Calendar.getInstance();
         this.date = Calendar.getInstance().getTime();
     }
 
