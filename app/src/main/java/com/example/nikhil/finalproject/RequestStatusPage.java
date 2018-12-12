@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class RequestStatusPage extends Activity implements View.OnClickListener {
 
-    Button buttonRefresh, buttonCloseRequest;
+    Button buttonRefresh, buttonCloseRequest, buttonReturnHome, buttonExtendRequest, buttonPm ;
 
 
     @Override
@@ -21,9 +21,17 @@ public class RequestStatusPage extends Activity implements View.OnClickListener 
 
         buttonRefresh = findViewById(R.id.buttonRefresh);
         buttonCloseRequest = findViewById(R.id.buttonCloseRequest);
+        buttonReturnHome = findViewById(R.id.buttonReturnHome);
+        buttonExtendRequest = findViewById(R.id.buttonExtendRequest);
+        buttonPm = findViewById(R.id.buttonPm);
+
 
         buttonRefresh.setOnClickListener(this);
         buttonCloseRequest.setOnClickListener(this);
+        buttonReturnHome.setOnClickListener(this);
+        buttonExtendRequest.setOnClickListener(this);
+        buttonPm.setOnClickListener(this);
+
 
     }
 
@@ -69,6 +77,22 @@ public class RequestStatusPage extends Activity implements View.OnClickListener 
         if (v == buttonCloseRequest){
             Intent intentCloseRequest = new Intent(this,CloseRequestPage.class);
             startActivity(intentCloseRequest);
+
+        }else if (v == buttonExtendRequest){
+            Intent intentExtend = new Intent(this,ExtendRequestPage.class);
+            startActivity(intentExtend);
+
+        }else if (v == buttonRefresh){
+
+
+        }else if (v == buttonReturnHome){
+            Intent intentHome = new Intent(this, HomePage.class);
+            startActivity(intentHome);
+
+        }else if (v == buttonPm){
+            Intent intentPm = new Intent(this,DonorMessagePage.class );
+            startActivity(intentPm);
+
         }
 
     }
