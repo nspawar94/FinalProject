@@ -10,6 +10,9 @@ public class Recipient {
     Date date;
 
     public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, Date date) {
+
+
+    public Recipient(String fname, String lname, String btype, String location, String story, double age) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
@@ -20,6 +23,9 @@ public class Recipient {
         this.date = date;
     }
 
+    public Recipient() {
+        }
+
 
 
     public Date getDate(){
@@ -29,9 +35,6 @@ public class Recipient {
     public String getLocation(){
         return location;
     }
-    public Recipient() {
-    }
-
     public void closeRequest(){
         this.isOpen = false;
     }
@@ -40,10 +43,10 @@ public class Recipient {
         return this.isOpen;
     }
 
-    public void setEndDate(){
-
+    public void setCurrentDate(){
+        this.date = Calendar.getInstance().getTime();
     }
-
+    
     public Calendar getEndDate(){
         return null;
     }

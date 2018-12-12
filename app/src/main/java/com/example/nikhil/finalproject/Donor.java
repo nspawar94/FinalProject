@@ -9,5 +9,7 @@ public class Donor {
     }
 
     public Donor() {
+
+
     }
 }

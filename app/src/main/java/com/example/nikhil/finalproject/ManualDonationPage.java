@@ -7,31 +7,42 @@ import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
 public class ManualDonationPage extends Activity implements View.OnClickListener {
 
-    EditText editLocationEnter, editDate;
-    Button buttonClear, buttonSubmit;
-
+    Button buttonShowDate,buttonClear, buttonSubmit;
+    String location;
+    Spinner spinnerLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_donation_page);
 
-        editLocationEnter = findViewById(R.id.editLocationEnter);
-        editDate = findViewById(R.id.editDate);
+        buttonShowDate = findViewById(R.id.buttonShowDate);
         buttonClear = findViewById(R.id.buttonClear);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
         buttonClear.setOnClickListener(this);
         buttonSubmit.setOnClickListener(this);
+        buttonShowDate.setOnClickListener(this);
+
+        spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
+        ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(ManualDonationPage.this,
+                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.location));
+        locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLocation.setAdapter(locationAdapter);
     }
 
     @Override
@@ -73,12 +84,27 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("Donor");
+        Date createdDate;
+
+        int checkLocationSelected = spinnerLocation.getSelectedItemPosition();
 
         if (view == buttonSubmit){
-
-            Intent intentProfile = new Intent(this,DonorProfilePage.class);
-            startActivity(intentProfile);
+            if (checkLocationSelected == 0) {
+                Toast.makeText(this,"Please choose location",Toast.LENGTH_LONG).show();
+            }else{
+                Donor newDonation = new Donor(createdDate,location);
+                Intent intentProfile = new Intent(this,DonorProfilePage.class);
+                startActivity(intentProfile);
             }
+
+        }else if(view==buttonClear){
+            Intent intentRefresh = new Intent(this,ManualDonationPage.class);
+            startActivity(intentRefresh);
+        }else if(view == buttonShowDate){
+
+        }
 
     }
 }
