@@ -2,11 +2,10 @@ package com.example.nikhil.finalproject;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DonorProfilePage extends Activity implements View.OnClickListener{
+public class DonorProfilePage extends AppCompatActivity implements View.OnClickListener{
 
    Button buttonAddNewDonation;
    TextView textViewGenDonation, textViewEmerDonation;
@@ -92,7 +91,7 @@ public class DonorProfilePage extends Activity implements View.OnClickListener{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.dropdown, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

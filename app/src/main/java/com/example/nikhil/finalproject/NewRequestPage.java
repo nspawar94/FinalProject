@@ -3,6 +3,7 @@ package com.example.nikhil.finalproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class NewRequestPage extends Activity implements View.OnClickListener {
+public class NewRequestPage extends AppCompatActivity implements View.OnClickListener {
     EditText editTextfname ,editTextlname, editTextcomment, editTextAge;
     double age;
     String bloodTypeSelected,locationSelected;
@@ -53,7 +54,7 @@ public class NewRequestPage extends Activity implements View.OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.dropdown, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

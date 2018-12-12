@@ -3,10 +3,11 @@ package com.example.nikhil.finalproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class RequestConfirmPage extends Activity implements View.OnClickListener{
+public class RequestConfirmPage extends AppCompatActivity implements View.OnClickListener{
     Button buttonViewReal;
 
     @Override
