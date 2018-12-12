@@ -10,7 +10,7 @@ public class Recipient {
     Date date;
 
     public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, Date date) {
-
+    }
 
     public Recipient(String fname, String lname, String btype, String location, String story, double age) {
         this.fname = fname;
