@@ -1,6 +1,7 @@
 package com.example.nikhil.finalproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
@@ -17,6 +18,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<Recipient> recipients;
     private Context mContext;
+
 
     RecyclerViewAdapter(ArrayList<Recipient> recipients, Context mContext){
         this.recipients = recipients;
@@ -35,6 +37,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.textViewLocation.setText(recipients.get(i).getLocation());
       //  viewHolder.textViewPosting.setText(recipients.get(i).getDate().toString());
+        viewHolder.buttonAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAccept = new Intent(mContext, AcceptPage.class);
+                mContext.startActivity(intentAccept);
+
+            }
+        });
+
+        viewHolder.buttonCant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCant = new Intent(mContext, CancelPage.class );
+                mContext.startActivity(intentCant);
+            }
+        });
 
 
     }
