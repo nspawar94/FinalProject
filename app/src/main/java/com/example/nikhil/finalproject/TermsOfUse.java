@@ -36,7 +36,7 @@ public class TermsOfUse extends Activity implements View.OnClickListener{
 
 
     }
-
+//hh
     @Override
     public void onClick(View v) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
