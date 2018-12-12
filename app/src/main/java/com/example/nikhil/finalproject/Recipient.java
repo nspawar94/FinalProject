@@ -13,15 +13,15 @@ public class Recipient {
    // public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, Date date) {
     //}
 
-    public Recipient(String fname, String lname, String btype, String location, String story, double age) {
+    public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, boolean isAccepted) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
         this.location = location;
         this.story = story;
         this.age = age;
-        this.isOpen = true;
-        this.isAccepted = false;
+        this.isOpen = isOpen;
+        this.isAccepted = isAccepted;
        // this.donorEmail = "";
     }
 

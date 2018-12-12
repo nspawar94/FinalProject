@@ -111,7 +111,7 @@ public class NewRequestPage extends Activity implements View.OnClickListener {
                 bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
                 locationSelected = spinnerLocation.getSelectedItem().toString();
 
-                Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age);
+                Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age,true,false);
                 //newRequest.setCurrentDate();
                 myRef.push().setValue(newRequest);
 
