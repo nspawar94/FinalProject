@@ -9,12 +9,10 @@
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="3dp"
         android:text="Delete" />
 
     <TextView
@@ -23,21 +21,21 @@
         android:layout_height="65dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="3dp"
         android:text="#000"
         tools:text="Count" />
 
     <TextView
         android:id="@+id/textViewQueryHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="63dp"
-        android:layout_alignTop="@+id/textViewQueryCount"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_width="167dp"
+        android:layout_height="65dp"
+        android:layout_alignBottom="@+id/textViewQueryCount"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/textViewQueryCount"
+        android:layout_toRightOf="@+id/textViewQueryCount"
         android:text="#000"
         tools:text="History" />
 </RelativeLayout>
