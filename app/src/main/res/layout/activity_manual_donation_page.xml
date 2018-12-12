@@ -16,7 +16,8 @@
         android:layout_marginEnd="5dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        android:layout_alignRight="@+id/textViewShowDate" />
+        android:layout_alignRight="@+id/textViewShowDate"
+        android:layout_marginRight="5dp" />
 
     <Button
         android:id="@+id/buttonSubmit"
@@ -105,11 +106,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginStart="115dp"
         android:layout_marginLeft="115dp"
-        android:layout_marginRight=""
-        android:text="Pick a Date" /> ="-99dp"
-        android:layout_toEndOf="@+id/textDate"
-        android:layout_toRightOf="@+id/textDate"
-        android:text="Pick a date" />
+        android:layout_marginRight="0dp"
+        android:text="Pick a Date" />
+
 
     <TextView
         android:id="@+id/textViewShowDate"
@@ -119,7 +118,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="159dp"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_marginLeft="4dp" />
 
 
 </RelativeLayout>

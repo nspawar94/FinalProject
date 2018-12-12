@@ -16,7 +16,7 @@ public class Donor {
     public Donor() {
     }
 
-    public Donor(String location, String donateType, String donorEmail) {
+    public Donor(String location, String donateType,String donorEmail) {
         this.location = location;
         this.donateType = donateType;
         this.donorEmail = donorEmail;
