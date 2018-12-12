@@ -18,6 +18,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<Recipient> recipients;
     private Context mContext;
+    String recipientinfo;
 
 
     RecyclerViewAdapter(ArrayList<Recipient> recipients, Context mContext){
@@ -41,8 +42,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intentAccept = new Intent(mContext, AcceptPage.class);
+                recipientinfo = "hi"; //change this to get recipient info which is clicked
+                intentAccept.putExtra("text_value", recipientinfo);
                 mContext.startActivity(intentAccept);
-
             }
         });
 
@@ -66,6 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView textViewRequest, textViewLocation, textViewPosting;
         Button buttonAccept, buttonCant;
         RelativeLayout parentLayout;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
