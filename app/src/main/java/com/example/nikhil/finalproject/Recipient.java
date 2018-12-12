@@ -9,6 +9,7 @@ public class Recipient {
     private boolean isOpen;
     Date date;
 
+    //trying weeee
     public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, Date date) {
     }
 
