@@ -6,14 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ManualDonationPage">
 
+    <Spinner
+        android:id="@+id/spinnerLocation"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextAge"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="147dp"
+        android:layout_marginLeft="147dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginBottom="0dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
     <Button
         android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editDate"
         android:layout_alignEnd="@+id/textDate"
-        android:layout_marginEnd="-170dp"
-        android:layout_marginBottom="-263dp"
+        android:layout_alignRight="@+id/textDate"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-183dp"
+        android:layout_marginRight="-183dp"
+        android:layout_marginBottom="118dp"
         android:text="Submit"
         android:textStyle="bold"
         tools:background="@android:color/holo_green_dark"
@@ -21,19 +38,6 @@
         tools:layout_editor_absoluteY="386dp"
         tools:textColor="@android:color/background_light" />
 
-    <TextView
-        android:id="@+id/textLocation"
-        android:layout_width="103dp"
-        android:layout_height="33dp"
-        android:layout_alignStart="@+id/textDate"
-        android:layout_alignBottom="@+id/editLocationEnter"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="6dp"
-        android:text="Location"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="270dp"
-        tools:text="Location" />
 
     <TextView
         android:id="@+id/textNewDonation"
@@ -48,7 +52,9 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="16dp"
-        tools:text="(+) New Donation" />
+        tools:text="(+) New Donation"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="28dp" />
 
     <TextView
         android:id="@+id/textDate"
@@ -66,33 +72,6 @@
         tools:layout_editor_absoluteY="178dp"
         tools:text="Date" />
 
-    <EditText
-        android:id="@+id/editDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="345dp"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="165dp" />
-
-    <EditText
-        android:id="@+id/editLocationEnter"
-        android:layout_width="213dp"
-        android:layout_height="43dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="260dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Donation center name"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="260dp" />
-
     <Button
         android:id="@+id/buttonClear"
         android:layout_width="wrap_content"
@@ -100,11 +79,34 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="222dp"
-        android:layout_marginRight="222dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginEnd="223dp"
+        android:layout_marginRight="223dp"
+        android:layout_marginBottom="112dp"
         android:text="Clear"
         tools:layout_editor_absoluteX="77dp"
         tools:layout_editor_absoluteY="386dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="-114dp"
+        android:layout_toStartOf="@+id/buttonClear"
+        android:text="Location"
+        android:textSize="24sp"
+        android:layout_marginRight="-114dp"
+        android:layout_toLeftOf="@+id/buttonClear" />
+
+    <Button
+        android:id="@+id/buttonShowDate"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonSubmit"
+        android:layout_alignBottom="@+id/textDate"
+        android:layout_marginEnd="-58dp"
+        android:layout_marginBottom="-7dp"
+        android:text="Pick Date" />
 
 </RelativeLayout>

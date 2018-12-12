@@ -3,6 +3,7 @@ package com.example.nikhil.finalproject;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        viewHolder.textViewLocation.setText(recipients.get(i).location);
+        viewHolder.textViewLocation.setText(recipients.get(i).getLocation());
+        viewHolder.textViewPosting.setText(recipients.get(i).getDate().toString());
 
 
     }

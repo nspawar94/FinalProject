@@ -1,13 +1,18 @@
 package com.example.nikhil.finalproject;
 
-public class Donor {
-    String date, location;
+import java.util.Date;
 
-    public Donor(String date, String location) {
-        this.date = date;
+public class Donor {
+    String location;
+    Date createdDate;
+
+    public Donor(Date createdDate, String location) {
+        this.createdDate = createdDate;
         this.location = location;
     }
 
     public Donor() {
+
+
     }
 }
