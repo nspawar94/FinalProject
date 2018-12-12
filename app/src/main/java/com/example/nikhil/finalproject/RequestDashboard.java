@@ -42,7 +42,7 @@ public class RequestDashboard extends Activity implements View.OnClickListener {
         recipients = new ArrayList<>();
         initRecyclerView();
         getRecipients();
-        getAcceptDetail();
+      //  getAcceptDetail();
         mAuth = FirebaseAuth.getInstance();
 
         textViewAcptDetail = findViewById(R.id.textViewAcptDetail);
@@ -51,7 +51,7 @@ public class RequestDashboard extends Activity implements View.OnClickListener {
 
     }
 
-    private void getAcceptDetail(){
+  /*  private void getAcceptDetail(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference acceptDetailmyRef = database.getReference("Recipient");
 
@@ -92,7 +92,7 @@ public class RequestDashboard extends Activity implements View.OnClickListener {
 
 
 
-    }
+    }*/
     private void getRecipients() {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

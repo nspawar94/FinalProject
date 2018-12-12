@@ -39,7 +39,7 @@ public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDon
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.textViewDntLocation.setText(donorHistory.get(i).getLocation());
-        viewHolder.textViewDntDate.setText(donorHistory.get(i).getDonateType());
+        viewHolder.textViewDntType.setText(donorHistory.get(i).getDonateType());
         //viewHolder.textViewDntDate.setText(donorHistory.get(i).getCreatedDate());
         viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override

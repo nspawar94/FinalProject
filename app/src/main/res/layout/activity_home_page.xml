@@ -78,7 +78,9 @@
         android:layout_marginTop="221dp"
         android:text="Requests You Have Posted"
         android:textColor="@android:color/background_dark"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignLeft="@+id/buttonCurrentRequest"
+        android:layout_marginLeft="1dp" />
 
     <TextView
         android:id="@+id/textViewAccept"
@@ -90,7 +92,9 @@
         android:layout_marginTop="402dp"
         android:text="Requests You Have Accepted"
         android:textColor="@android:color/background_dark"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignLeft="@+id/buttonCurrentRequest"
+        android:layout_marginLeft="0dp" />
 
     <View
         android:id="@+id/divider3"
@@ -100,7 +104,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="208dp"
         android:background="?android:attr/listDivider"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_alignParentLeft="true" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -129,6 +134,8 @@
 
         android:gravity="center_vertical|center_horizontal"
         android:text="Accept Detail"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginLeft="75dp"
+        android:layout_alignLeft="@+id/textViewAcptCount" />
 
 </RelativeLayout>

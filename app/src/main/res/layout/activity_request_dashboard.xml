@@ -46,7 +46,8 @@
         android:layout_marginTop="238dp"
         android:text="Active Request"
         android:textColor="@android:color/background_dark"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginLeft="14dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -55,7 +56,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="269dp" />
+        android:layout_marginTop="269dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="14dp" />
 
     <TextView
         android:id="@+id/textViewAcptCount"

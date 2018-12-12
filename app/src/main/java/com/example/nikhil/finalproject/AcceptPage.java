@@ -64,7 +64,7 @@ public class AcceptPage extends Activity implements View.OnClickListener{
                    Date createdDate = Calendar.getInstance().getTime();
                     String location = findR.getLocation();
                     String donateType = "urgent";
-                    Donor urgentDonor = new Donor(createdDate,location,donateType);
+                    Donor urgentDonor = new Donor(location,donateType);
                    myRef2.push().setValue(urgentDonor);
                 }
 

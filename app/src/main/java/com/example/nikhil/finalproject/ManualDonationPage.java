@@ -87,7 +87,7 @@ public class ManualDonationPage extends Activity implements View.OnClickListener
     public void onClick(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Donor");
-        Date createdDate;
+       // Date createdDate;
 
         int checkLocationSelected = spinnerLocation.getSelectedItemPosition();
 

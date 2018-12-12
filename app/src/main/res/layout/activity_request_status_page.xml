@@ -18,7 +18,9 @@
         android:text="Extend Request"
         android:textColor="@android:color/background_light"
         tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="388dp" />
+        tools:layout_editor_absoluteY="388dp"
+        android:layout_alignLeft="@+id/buttonRefresh"
+        android:layout_marginLeft="0dp" />
 
     <Button
         android:id="@+id/buttonReturnHome"
@@ -32,7 +34,9 @@
         android:text="Return Home"
         android:textColor="@android:color/background_light"
         tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="388dp" />
+        tools:layout_editor_absoluteY="388dp"
+        android:layout_alignLeft="@+id/buttonRefresh"
+        android:layout_marginLeft="-1dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -183,7 +187,9 @@
         android:text="Close Request"
         android:textColor="@android:color/background_light"
         tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="388dp" />
+        tools:layout_editor_absoluteY="388dp"
+        android:layout_alignLeft="@+id/buttonRefresh"
+        android:layout_marginLeft="0dp" />
 
     <Button
         android:id="@+id/buttonPm"
@@ -194,6 +200,8 @@
         android:layout_marginTop="72dp"
         android:layout_marginEnd="4dp"
         android:background="@drawable/pmicon"
-        android:text="" />
+        android:text=""
+        android:layout_alignRight="@+id/textViewPeopleDonated2"
+        android:layout_marginRight="4dp" />
 
 </RelativeLayout>

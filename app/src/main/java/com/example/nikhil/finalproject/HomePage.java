@@ -41,7 +41,7 @@ public class HomePage extends Activity implements View.OnClickListener{
         recipients = new ArrayList<>();
         initRecyclerView();
         getRecipients();
-        getAcceptDetail();
+       // getAcceptDetail();
 
         buttonNewRequest = findViewById(R.id.buttonNewRequest);
         buttonDonationHomepage = findViewById(R.id.buttonDonationHomePage);
@@ -57,7 +57,7 @@ public class HomePage extends Activity implements View.OnClickListener{
 
     }
 
-    private void getAcceptDetail(){
+   /* private void getAcceptDetail(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference acceptDetailmyRef = database.getReference("Recipient");
 
@@ -97,7 +97,7 @@ public class HomePage extends Activity implements View.OnClickListener{
         });
 
 
-    }
+    } */
 
     private void getRecipients() {
 

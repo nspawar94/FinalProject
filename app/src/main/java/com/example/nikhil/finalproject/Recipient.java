@@ -10,10 +10,10 @@ public class Recipient {
     //Date date, enddate;
 
     //trying weeee
-    public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, Date date) {
-    }
+   // public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, Date date) {
+    //}
 
-    public Recipient(String fname, String lname, String btype, String location, String story, double age, String donorEmail) {
+    public Recipient(String fname, String lname, String btype, String location, String story, double age) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
@@ -22,7 +22,7 @@ public class Recipient {
         this.age = age;
         this.isOpen = true;
         this.isAccepted = false;
-        this.donorEmail = "";
+       // this.donorEmail = "";
     }
 
     public Recipient() {
@@ -34,10 +34,10 @@ public class Recipient {
         }else this.isAccepted = false;
     }
 
-    public void setDonoremail(String donoremail){
-            this.donorEmail= donoremail;
+ //   public void setDonoremail(String donoremail){
+   //         this.donorEmail= donoremail;
 
-    }
+    //}
 
    // public Date getDate(){
      //   return date;
@@ -61,7 +61,7 @@ public class Recipient {
       //  this.date = Calendar.getInstance().getTime()+24;}
 
 
-    public Calendar getEndDate(){
-        return null;
+   // public Calendar getEndDate(){
+     //   return null;
     }
-}
+//}

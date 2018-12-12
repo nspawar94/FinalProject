@@ -7,22 +7,23 @@ import java.util.Date;
 public class Donor {
 
 
-    public Date createdDate;
+    //public Date createdDate;
     public String location;
     //Boolean isManual;// manual vs urgent
     public String donateType;
 
-    public Donor(Date createdDate, String location, String donateType) {
-        this.createdDate = createdDate;
+    public Donor() {
+    }
+
+    public Donor(String location, String donateType) {
         this.location = location;
         this.donateType = donateType;
-
-     }
-
-    public Date getCreatedDate(){
-        return this.getCreatedDate();
-
     }
+
+    // public Date getCreatedDate(){
+     //   return this.getCreatedDate();
+
+    //}
     public String getLocation(){
         return  this.location;
 
