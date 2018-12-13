@@ -32,6 +32,7 @@ public class User {
 
     }
     public void setNextDonate(int day,int month, int year){
+        //take current date and calculate the new date that this user can donate again
         if(month>9){
             this.nextDonateMonth = month-9;
             this.nextDonateYear = year+1;

@@ -49,26 +49,18 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
             startActivity(intentRequestDashboard);
 
         } else if (view == buttonYes){
-
-
             final FirebaseUser user = mAuth.getCurrentUser();// donor
-            
-            final DatabaseReference myRef = database.getReference("Recipient");
-            final DatabaseReference myRef2 = database.getReference("Donor");
+
+            final DatabaseReference myRefR = database.getReference("Recipient");
             String job ="123";//recipient ID
-            myRef.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
+
+            //create new donation related to this request, update recipient status, update user status
+            myRefR.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    String editDonorEmail = user.getEmail();
+                    //update recipient status
                     String editKey = dataSnapshot.getKey();
-                    Recipient findR = dataSnapshot.getValue(Recipient.class);
-                    myRef.child(editKey).child("donorEmail").setValue(editDonorEmail);
-
-
-                    String location = findR.getLocation();
-                    String donateType = "urgent";
-
-                    Donor urgentDonor = new Donor(location,donateType,editDonorEmail);
-                    myRef2.push().setValue(urgentDonor);
+                    myRefR.child(editKey).child("isAccepted").setValue(true);
+                    myRefR.child(editKey).child("donorEmail").setValue(user.getEmail());
                 }
 
                 @Override
@@ -91,6 +83,7 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
 
                 }
             });
+
             Intent intentRequestDashboard = new Intent(this, RequestDashboard.class);
             startActivity(intentRequestDashboard);
         }

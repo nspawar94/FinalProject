@@ -8,11 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RequestStatusPage extends AppCompatActivity implements View.OnClickListener {
 
     Button buttonRefresh, buttonCloseRequest, buttonReturnHome, buttonExtendRequest, buttonPm ;
+    TextView textViewPeopleNotified, textViewPeopleAccepted,textViewPeopleDonatedBefore;
 
 
     @Override
@@ -25,14 +27,15 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         buttonReturnHome = findViewById(R.id.buttonReturnHome);
         buttonExtendRequest = findViewById(R.id.buttonExtendRequest);
         buttonPm = findViewById(R.id.buttonPm);
-
+        textViewPeopleAccepted = findViewById(R.id.textViewPeopleAccepted);
+        textViewPeopleDonatedBefore = findViewById(R.id.textViewPeopleDonatedBefore);
+        textViewPeopleNotified = findViewById(R.id.textViewPeopleNotified);
 
         buttonRefresh.setOnClickListener(this);
         buttonCloseRequest.setOnClickListener(this);
         buttonReturnHome.setOnClickListener(this);
         buttonExtendRequest.setOnClickListener(this);
         buttonPm.setOnClickListener(this);
-
 
     }
 
@@ -84,6 +87,8 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
             startActivity(intentExtend);
 
         }else if (v == buttonRefresh){
+            Intent intentRefresh = new Intent(RequestStatusPage.this,RequestStatusPage.class);
+            startActivity(intentRefresh);
 
 
         }else if (v == buttonReturnHome){

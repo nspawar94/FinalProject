@@ -43,20 +43,21 @@ public class CancelPage extends AppCompatActivity implements View.OnClickListene
             startActivity(intentRequestDashboard);
 
         } else if (view == buttonYes){
-
-            final FirebaseUser user = mAuth.getCurrentUser();// donor
             //Recipient r = new Recipient(get from recycler view)// recipient
             //r.setAccepted(true);
             //r.setDonorEmail(user.getEmail());
 
-            final DatabaseReference myRef = database.getReference("Donor");
-            String job = "456";//donor ID
-            myRef.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
+            final DatabaseReference myRefR = database.getReference("Recipient");
+            String job = "456"; //recipient ID
+
+            //update status of this recipient to NOT accepted
+            myRefR.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    String deleteKey = dataSnapshot.getKey();
-                    myRef.child(deleteKey).setValue(null);
-                        }
+                    String editKey = dataSnapshot.getKey();
+                    myRefR.child(editKey).child("isAccepted").setValue(false);
+                    myRefR.child(editKey).child("donorEmail").setValue(null);
+                }
 
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
