@@ -32,23 +32,59 @@ public class TermsOfUse extends AppCompatActivity implements View.OnClickListene
 
         buttonDisagree.setOnClickListener(this);
         buttonAgree.setOnClickListener(this);
-
-
-
+        mAuth = FirebaseAuth.getInstance();
 
     }
-//hh
+
     @Override
     public void onClick(View v) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("User");
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userEmail = user.getEmail();
+
 
         if(v == buttonAgree) {
             Intent intentDashboard = new Intent(this, HomePage.class);
             startActivity(intentDashboard);
 
         } else if(v == buttonDisagree) {
-            //user.delete();
+            //delete user from user database
+            myRef.orderByChild("email").equalTo(userEmail).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    String deleteKey = dataSnapshot.getKey();
+
+                    myRef.child(deleteKey).setValue(null);
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            //delete user from FirebaseAuthen
+            user.delete();
+
+
+
+
             Intent intentMain = new Intent (this,MainActivity.class);
             startActivity(intentMain);
         }

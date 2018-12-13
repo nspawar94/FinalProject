@@ -2,16 +2,14 @@ package com.example.nikhil.finalproject;
 
 import java.util.Calendar;
 import java.util.Date;
-//
+
 
 public class Donor {
 
-
-    //public Date createdDate;
     public String location;
-    //Boolean isManual;// manual vs urgent
     public String donateType;
     public String donorEmail;
+    public int donateDay,donateMonth,donateYear;
 
     public Donor() {
     }
@@ -23,10 +21,6 @@ public class Donor {
 
     }
 
-    // public Date getCreatedDate(){
-     //   return this.getCreatedDate();
-
-    //}
     public String getLocation(){
         return  this.location;
 
@@ -34,6 +28,12 @@ public class Donor {
 
     public String getDonateType (){
         return this.donateType;
+    }
+
+    public void setDonateDate(int day, int month, int year){
+        this.donateDay = day;
+        this.donateMonth = month;
+        this.donateYear = year;
     }
 
     public String getDonorEmail(){

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,8 +34,6 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
     Spinner spinnerLocation;
     private FirebaseAuth mAuth;
     TextView textViewShowDay;
-
-    
     int day, month, year;
     int dayFinal, monthFinal, yearFinal;
 
@@ -98,39 +101,89 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Donor");
-       // Date createdDate;
+        final DatabaseReference myRef2 = database.getReference("User");
+
 
         int checkLocationSelected = spinnerLocation.getSelectedItemPosition();
 
-        if (view == buttonSubmit){
-            if (checkLocationSelected == 0) {
-                Toast.makeText(this,"Please choose location",Toast.LENGTH_LONG).show();
-            }else{
-
-                String locationSelected = spinnerLocation.getSelectedItem().toString();
-                String donorEmail = mAuth.getCurrentUser().getEmail();
-                Donor newDonation = new Donor(locationSelected, "General", donorEmail);
-                myRef.push().setValue(newDonation);
-
-                Intent intentProfile = new Intent(this,DonorProfilePage.class);
-                startActivity(intentProfile);
-            }
-
-
-
-        }else if(view == buttonClear){
-            Intent intentRefresh = new Intent(this,DonorProfilePage.class);
-            startActivity(intentRefresh);
-        }else if(view == buttonShowDate){
+        if(view == buttonShowDate) {
             Calendar c = Calendar.getInstance();
             year = c.get(Calendar.YEAR);
             month = c.get(Calendar.MONTH);
             day = c.get(Calendar.DATE);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(ManualDonationPage.this,ManualDonationPage.this,year, month,day);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(ManualDonationPage.this, ManualDonationPage.this, year, month, day);
             datePickerDialog.show();
+
+        } else if(view == buttonClear){
+            Intent intentRefresh = new Intent(this,DonorProfilePage.class);
+            startActivity(intentRefresh);
+
+        } else if (view == buttonSubmit){
+            if (checkLocationSelected == 0) {
+                Toast.makeText(this,"Please choose location",Toast.LENGTH_LONG).show();
+            }else if(yearFinal<1){
+                Toast.makeText(this,"Please choose donation date",Toast.LENGTH_LONG).show();
+            } else {
+                String locationSelected = spinnerLocation.getSelectedItem().toString();
+                String donorEmail = mAuth.getCurrentUser().getEmail();
+                Donor newDonation = new Donor(locationSelected, "General", donorEmail);
+                newDonation.setDonateDate(dayFinal,monthFinal,yearFinal);
+                myRef.push().setValue(newDonation);
+
+                //update last donate date and new donate date of this user
+                myRef2.orderByChild("email").equalTo(donorEmail).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        String editKey = dataSnapshot.getKey();
+                        //update last donate date
+                        myRef2.child(editKey).child("lastDonateDay").setValue(dayFinal);
+                        myRef2.child(editKey).child("lastDonateMonth").setValue(monthFinal);
+                        myRef2.child(editKey).child("lastDonateYear").setValue(yearFinal);
+
+                        //update new donate date
+                        myRef2.child(editKey).child("nextDonateDay").setValue(dayFinal);
+                        if(monthFinal>9){
+                            monthFinal = monthFinal-9;
+                            yearFinal = yearFinal+1;
+                        }else{
+                            monthFinal = monthFinal+3;
+                        }
+                        myRef2.child(editKey).child("nextDonateMonth").setValue(monthFinal);
+                        myRef2.child(editKey).child("nextDonateYear").setValue(yearFinal);
+
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+
+
+            });
+                Intent intentProfile = new Intent(this,DonorProfilePage.class);
+                startActivity(intentProfile);
+
+
         }
 
+    }
     }
 
     @Override

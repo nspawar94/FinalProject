@@ -21,6 +21,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.nio.channels.CancelledKeyException;
+import java.util.Calendar;
+
 public class CreateAccount extends AppCompatActivity implements View.OnClickListener{
     Button buttonNext;
     EditText editTextName, editTextLastName, editTextAge, editTextEMail, editTextPassword,editTextConfirmPassword;
@@ -62,7 +65,7 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("User");
 
-        String email = editTextEMail.getText().toString();
+        final String email = editTextEMail.getText().toString();
         String password = editTextPassword.getText().toString();
         String confirmPassword = editTextConfirmPassword.getText().toString();
 
@@ -74,10 +77,10 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
 
         int checkBloodSelected, checkGenderSelected;
 
-
         if(v == buttonNext){
             checkBloodSelected = spinnerBloodType.getSelectedItemPosition();
             checkGenderSelected = spinnerGender.getSelectedItemPosition();
+
             if(!password.equals(confirmPassword)){
                 Toast.makeText(this,"Please confirm password again",Toast.LENGTH_LONG).show();
             }else if(checkBloodSelected ==0) {
@@ -90,7 +93,14 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    User newUser = new User(fname,lname,genderSelected,bloodTypeSelected,age);
+                                    int currentDay,currentMonth,currentYear;
+                                    Calendar c = Calendar.getInstance();
+                                    currentDay= c.get(Calendar.DATE);
+                                    currentMonth = c.get(Calendar.MONTH);
+                                    currentYear= c.get(Calendar.YEAR);
+
+                                    User newUser = new User(fname,lname,genderSelected,bloodTypeSelected,age,email);
+                                    newUser.setLastDonate(currentDay,currentMonth,currentYear);
                                     myRef.push().setValue(newUser);
 
                                     FirebaseUser user = mAuth.getCurrentUser();

@@ -113,7 +113,6 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
                 locationSelected = spinnerLocation.getSelectedItem().toString();
 
                 Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age,true,false);
-                //newRequest.setCurrentDate();
                 myRef.push().setValue(newRequest);
 
                 Intent intentRequestConfirmation = new Intent(this,RequestConfirmPage.class);
