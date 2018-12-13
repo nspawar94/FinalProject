@@ -59,8 +59,21 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     //update recipient status
                     String editKey = dataSnapshot.getKey();
+                    int year,month,day;
+                    Calendar c = Calendar.getInstance();
+
+                    year = c.get(Calendar.YEAR);
+                    month = c.get(Calendar.MONTH);
+                    day = c.get(Calendar.DATE);
+
                     myRefR.child(editKey).child("isAccepted").setValue(true);
                     myRefR.child(editKey).child("donorEmail").setValue(user.getEmail());
+                    myRefR.child(editKey).child("acceptDay").setValue(day);
+                    myRefR.child(editKey).child("acceptMonth").setValue(month);
+                    myRefR.child(editKey).child("acceptYear").setValue(year);
+
+
+
                 }
 
                 @Override

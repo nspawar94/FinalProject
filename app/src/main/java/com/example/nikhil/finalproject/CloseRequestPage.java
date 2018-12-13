@@ -58,10 +58,9 @@ public class CloseRequestPage extends AppCompatActivity implements View.OnClickL
 
                         Donor urgentDonor = new Donor(location,donateType,findR.donorEmail);
                         final int year,month,day;
-                        Calendar c = Calendar.getInstance();
-                        year = c.get(Calendar.YEAR);
-                        month = c.get(Calendar.MONTH);
-                        day = c.get(Calendar.DATE);
+                        day = findR.getAcceptDay();
+                        month = findR.getAcceptMonth();
+                        year = findR.getAcceptYear();
                         urgentDonor.setDonateDate(day,month,year);
                         myRefD.push().setValue(urgentDonor);
 

@@ -7,6 +7,7 @@ public class Recipient {
     public String fname, lname, btype, location, story,donorEmail;
     public double age;
     private boolean isOpen,isAccepted;
+    public int acceptDay, acceptMonth, acceptYear;
 
 
     public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, boolean isAccepted) {
@@ -44,14 +45,15 @@ public class Recipient {
         return this.isOpen;
     }
 
-   // public void setCurrentDate(){
-     //   this.date = Calendar.getInstance().getTime();
-  //  }
-    //public void setEnddate() {
-      //  this.date = Calendar.getInstance().getTime()+24;}
-
-
-   // public Calendar getEndDate(){
-     //   return null;
+    public int getAcceptDay(){
+        return this.acceptDay;
     }
-//}
+    public int getAcceptMonth(){
+        return this.acceptMonth;
+    }
+    public int getAcceptYear(){
+        return this.acceptYear;
+    }
+
+    }
+
