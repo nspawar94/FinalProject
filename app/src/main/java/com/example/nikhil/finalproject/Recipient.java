@@ -41,7 +41,6 @@ public class Recipient {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setExpiredDate(int day, int month, int year){
-        //receive current date to set expired date
         YearMonth yearMonthObject = YearMonth.of(year,month);
         int daysIntMonth = yearMonthObject.lengthOfMonth();
 
@@ -55,7 +54,9 @@ public class Recipient {
                 this.endYear = year;
             }
         }else{
-            this.endYear = day + 2;
+            this.endDay = day + 2;
+            this.endMonth=month;
+            this.endYear=year;
         }
 
     }

@@ -126,7 +126,7 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
                 day = c.get(Calendar.DATE);
 
                 Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age,true,false);
-                newRequest.setExpiredDate(day,month,year);
+                //newRequest.setExpiredDate(day,month,year);
                 myRef.push().setValue(newRequest);
 
                 Intent intentRequestConfirmation = new Intent(this,RequestConfirmPage.class);
