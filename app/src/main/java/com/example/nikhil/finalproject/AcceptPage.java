@@ -24,7 +24,7 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
 
     Button buttonYes, buttonNo;
     private FirebaseAuth mAuth;
-    String recipientinfo;
+    String recipientInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
         buttonNo.setOnClickListener(this);
         buttonYes.setOnClickListener(this);
 
-        recipientinfo =  getIntent().getStringExtra("text_value");
+        recipientInfo =  getIntent().getStringExtra("text_value");
     }
 
 
@@ -52,10 +52,7 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
 
 
             final FirebaseUser user = mAuth.getCurrentUser();// donor
-            //Recipient r = new Recipient(get from recycler view)// recipient
-            //r.setAccepted(true);
-            //r.setDonorEmail(user.getEmail());
-
+            
             final DatabaseReference myRef = database.getReference("Recipient");
             final DatabaseReference myRef2 = database.getReference("Donor");
             String job ="123";//recipient ID
