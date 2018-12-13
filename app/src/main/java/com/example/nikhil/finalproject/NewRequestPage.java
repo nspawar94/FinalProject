@@ -1,8 +1,11 @@
 package com.example.nikhil.finalproject;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +18,8 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
 
 public class NewRequestPage extends AppCompatActivity implements View.OnClickListener {
     EditText editTextfname ,editTextlname, editTextcomment, editTextAge;
@@ -88,6 +93,8 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
         return super.onOptionsItemSelected(item);
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onClick(View v) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -112,7 +119,14 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
                 bloodTypeSelected = spinnerBloodType.getSelectedItem().toString();
                 locationSelected = spinnerLocation.getSelectedItem().toString();
 
+                Calendar c = Calendar.getInstance();
+                int day, month, year;
+                year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DATE);
+
                 Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age,true,false);
+                newRequest.setExpiredDate(day,month,year);
                 myRef.push().setValue(newRequest);
 
                 Intent intentRequestConfirmation = new Intent(this,RequestConfirmPage.class);
