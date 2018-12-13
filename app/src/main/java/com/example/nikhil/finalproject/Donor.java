@@ -18,12 +18,10 @@ public class Donor {
         this.location = location;
         this.donateType = donateType;
         this.donorEmail = donorEmail;
-
     }
 
     public String getLocation(){
         return  this.location;
-
     }
 
     public String getDonateType (){
@@ -37,7 +35,6 @@ public class Donor {
     }
 
     public String getDonorEmail(){
-
         return this.donorEmail;
     }
 
