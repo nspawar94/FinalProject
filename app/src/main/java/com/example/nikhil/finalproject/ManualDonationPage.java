@@ -127,7 +127,7 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
             } else {
                 String locationSelected = spinnerLocation.getSelectedItem().toString();
                 String donorEmail = mAuth.getCurrentUser().getEmail();
-                Donor newDonation = new Donor(locationSelected, "General", donorEmail);
+                Donor newDonation = new Donor(locationSelected, "General", donorEmail,"");
                 newDonation.setDonateDate(dayFinal,monthFinal,yearFinal);
                 myRef.push().setValue(newDonation);
 

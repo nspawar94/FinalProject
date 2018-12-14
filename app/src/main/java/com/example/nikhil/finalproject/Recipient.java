@@ -10,14 +10,16 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Recipient {
-    public String fname, lname, btype, location, story,donorEmail;
+    public String fname, lname, btype, location, story,donorEmail,recipientID;
     public double age;
     public boolean isOpen,isAccepted;
     public int acceptDay, acceptMonth, acceptYear;
     public int endDay,endMonth,endYear;
 
 
-    public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, boolean isAccepted, String donorEmail) {
+    public Recipient(String fname, String lname, String btype,
+                     String location, String story, double age, boolean isOpen,
+                     boolean isAccepted, String donorEmail, String recipientID) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
@@ -27,6 +29,7 @@ public class Recipient {
         this.isOpen = isOpen;
         this.isAccepted = isAccepted;
         this.donorEmail = donorEmail;
+        this.recipientID = recipientID;
     }
 
     public Recipient() {

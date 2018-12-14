@@ -9,15 +9,17 @@ public class Donor {
     public String location;
     public String donateType;
     public String donorEmail;
+    public String donationID;
     public int donateDay,donateMonth,donateYear;
 
     public Donor() {
     }
 
-    public Donor(String location, String donateType,String donorEmail) {
+    public Donor(String location, String donateType,String donorEmail, String donationID) {
         this.location = location;
         this.donateType = donateType;
         this.donorEmail = donorEmail;
+        this.donationID = donationID;
     }
 
     public String getLocation(){
