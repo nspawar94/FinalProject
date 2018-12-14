@@ -137,7 +137,6 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                         String editKey = dataSnapshot.getKey();
-                        //Donor findD = dataSnapshot.getValue(Recipient.class);
 
                         //update last donate date
                         myRef2.child(editKey).child("lastDonateDay").setValue(dayFinal);
@@ -145,13 +144,14 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
                         myRef2.child(editKey).child("lastDonateYear").setValue(yearFinal);
 
                         //update new donate date
-                        myRef2.child(editKey).child("nextDonateDay").setValue(dayFinal);
                         if(monthFinal>9){
                             monthFinal = monthFinal-9;
                             yearFinal = yearFinal+1;
                         }else{
                             monthFinal = monthFinal+3;
                         }
+
+                        myRef2.child(editKey).child("nextDonateDay").setValue(dayFinal);
                         myRef2.child(editKey).child("nextDonateMonth").setValue(monthFinal);
                         myRef2.child(editKey).child("nextDonateYear").setValue(yearFinal);
 

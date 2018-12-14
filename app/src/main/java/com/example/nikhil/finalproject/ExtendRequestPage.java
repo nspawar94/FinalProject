@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.Calendar;
 
@@ -47,31 +49,19 @@ public class ExtendRequestPage extends AppCompatActivity implements View.OnClick
         } else if (v == buttonExtendRequest){
             String job = "123456";//get request IDfrom page before
 
-            myRefR.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
-                @RequiresApi(api = Build.VERSION_CODES.O)
+            ChildEventListener childEventListener = myRefR.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     String editKey = dataSnapshot.getKey();
+                    Recipient findR =dataSnapshot.getValue(Recipient.class);
+
                     Calendar c = Calendar.getInstance();
                     int day, month, year;
                     year = c.get(Calendar.YEAR);
                     month = c.get(Calendar.MONTH);
                     day = c.get(Calendar.DATE);
 
-                    YearMonth yearMonthObject = YearMonth.of(year,month);
-                    int daysIntMonth = yearMonthObject.lengthOfMonth();
+                    findR.setExpiredDate(day,month,year);
 
-                    //set end date for this request
-                    if(day>daysIntMonth-2){
-                        day = day - daysIntMonth + 2;
-                        if(month>11){
-                            month = month-11;
-                            year = year +1;
-                        }else{
-                            month = month+1;
-                        }
-                    }else{
-                        day = day + 2;
-                    }
                     myRefR.child(editKey).child("endDay").setValue(day);
                     myRefR.child(editKey).child("endMonth").setValue(month);
                     myRefR.child(editKey).child("endYear").setValue(year);

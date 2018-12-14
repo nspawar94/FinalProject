@@ -3,6 +3,8 @@ package com.example.nikhil.finalproject;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,25 +42,23 @@ public class Recipient {
             this.donorEmail= donorEmail;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void setExpiredDate(int day, int month, int year){
-        YearMonth yearMonthObject = YearMonth.of(year,month);
-        int daysIntMonth = yearMonthObject.lengthOfMonth();
 
-        if(day>daysIntMonth-2){
-            this.endDay = day - daysIntMonth + 2;
-            if(month>11){
-                this.endMonth = month-11;
-                this.endYear = year +1;
-            }else{
-                this.endMonth = month+1;
-                this.endYear = year;
-            }
-        }else{
-            this.endDay = day + 2;
-            this.endMonth=month;
-            this.endYear=year;
-        }
+    public void setExpiredDate(int day, int month, int year){
+        // Creating a Calendar for the current date
+        Calendar c = Calendar.getInstance();
+        c.set(year, month, day);
+
+        // Creating a Date for the expiry date
+        Date d = new Date(c.getTime().getTime() + 2*24*60*60*1000);
+        // Creating a Calendar for the expiry date
+        Calendar newC = Calendar.getInstance();
+        newC.setTime(d);
+
+        // Setting the object expiry date values
+        this.endYear = newC.get(Calendar.YEAR);
+        this.endMonth = newC.get(Calendar.MONTH);
+        this.endDay = newC.get(Calendar.DATE);
+
 
     }
 
