@@ -40,11 +40,11 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_request_dashboard);
         recipients = new ArrayList<>();
         initRecyclerView();
-        getRecipients();
-        //getAcceptDetail();
-        mAuth = FirebaseAuth.getInstance();
-
         textViewAcptDetail = findViewById(R.id.textViewAcptDetail);
+        mAuth = FirebaseAuth.getInstance();
+        getRecipients();
+        getAcceptDetail();
+
 
 
 
@@ -56,9 +56,14 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
 
         final String showAcceptEmail = mAuth.getCurrentUser().getEmail();
 
-        acceptDetailmyRef.addChildEventListener(new ChildEventListener() {
+        acceptDetailmyRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot child: dataSnapshot.getChildren()){
                     Recipient showAcceptRecipient = child.getValue(Recipient.class);
 
@@ -68,26 +73,6 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
 
 
             }
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

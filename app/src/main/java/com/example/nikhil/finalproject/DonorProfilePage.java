@@ -31,7 +31,7 @@ public class DonorProfilePage extends AppCompatActivity implements View.OnClickL
    TextView textViewGenDonation, textViewEmerDonation;
    private ArrayList <Donor> donorHistory;
    private recycleviewDonorProfile recycleviewDonorProfilev;
-    private FirebaseAuth mAuth;
+   private FirebaseAuth mAuth;
 
 
 
@@ -50,11 +50,12 @@ public class DonorProfilePage extends AppCompatActivity implements View.OnClickL
 
         donorHistory = new ArrayList<>();
         initRecyclerView();
-        //getLocation();
         mAuth = FirebaseAuth.getInstance();
+        getLocation();
+
     }
 
-    public void getLocation (){
+    private void getLocation (){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference locationRef = database.getReference("Donor");
@@ -67,12 +68,11 @@ public class DonorProfilePage extends AppCompatActivity implements View.OnClickL
                 Donor donor = dataSnapshot.getValue(Donor.class);
                 donorHistory.add(donor);
                 recycleviewDonorProfilev.notifyDataSetChanged();
-
             }
-
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
 
             }
 
