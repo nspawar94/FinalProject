@@ -71,6 +71,7 @@ public class Recipient {
     public boolean getIsOpen(){
         return this.isOpen;
     }
+    public boolean getIsAccepted(){ return this.isAccepted;}
 
     public int getAcceptDay(){
         return this.acceptDay;
