@@ -127,7 +127,7 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
             } else {
                 String locationSelected = spinnerLocation.getSelectedItem().toString();
                 String donorEmail = mAuth.getCurrentUser().getEmail();
-                Donor newDonation = new Donor(locationSelected, "General", donorEmail);
+                Donor newDonation = new Donor(locationSelected, "General", donorEmail,"");
                 newDonation.setDonateDate(dayFinal,monthFinal,yearFinal);
                 myRef.push().setValue(newDonation);
 
@@ -137,19 +137,21 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                         String editKey = dataSnapshot.getKey();
+
                         //update last donate date
                         myRef2.child(editKey).child("lastDonateDay").setValue(dayFinal);
                         myRef2.child(editKey).child("lastDonateMonth").setValue(monthFinal);
                         myRef2.child(editKey).child("lastDonateYear").setValue(yearFinal);
 
                         //update new donate date
-                        myRef2.child(editKey).child("nextDonateDay").setValue(dayFinal);
                         if(monthFinal>9){
                             monthFinal = monthFinal-9;
                             yearFinal = yearFinal+1;
                         }else{
                             monthFinal = monthFinal+3;
                         }
+
+                        myRef2.child(editKey).child("nextDonateDay").setValue(dayFinal);
                         myRef2.child(editKey).child("nextDonateMonth").setValue(monthFinal);
                         myRef2.child(editKey).child("nextDonateYear").setValue(yearFinal);
 

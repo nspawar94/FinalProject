@@ -8,7 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -80,9 +83,17 @@ public class TermsOfUse extends AppCompatActivity implements View.OnClickListene
             });
 
             //delete user from FirebaseAuthen
-            user.delete();
-
-
+            //it is supposed to work, but it somehow doesn't.
+            user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(TermsOfUse.this,"account is deleted",Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(TermsOfUse.this,"account is not deleted",Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
 
 
             Intent intentMain = new Intent (this,MainActivity.class);
@@ -90,4 +101,7 @@ public class TermsOfUse extends AppCompatActivity implements View.OnClickListene
         }
 
     }
+
+
+
 }

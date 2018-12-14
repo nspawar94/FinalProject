@@ -3,19 +3,23 @@ package com.example.nikhil.finalproject;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Recipient {
-    public String fname, lname, btype, location, story,donorEmail;
+    public String fname, lname, btype, location, story,donorEmail,recipientID;
     public double age;
-    private boolean isOpen,isAccepted;
+    public boolean isOpen,isAccepted;
     public int acceptDay, acceptMonth, acceptYear;
     public int endDay,endMonth,endYear;
 
 
-    public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, boolean isAccepted) {
+    public Recipient(String fname, String lname, String btype,
+                     String location, String story, double age, boolean isOpen,
+                     boolean isAccepted, String donorEmail, String recipientID) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
@@ -24,6 +28,8 @@ public class Recipient {
         this.age = age;
         this.isOpen = isOpen;
         this.isAccepted = isAccepted;
+        this.donorEmail = donorEmail;
+        this.recipientID = recipientID;
     }
 
     public Recipient() {
@@ -39,25 +45,23 @@ public class Recipient {
             this.donorEmail= donorEmail;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void setExpiredDate(int day, int month, int year){
-        YearMonth yearMonthObject = YearMonth.of(year,month);
-        int daysIntMonth = yearMonthObject.lengthOfMonth();
 
-        if(day>daysIntMonth-2){
-            this.endDay = day - daysIntMonth + 2;
-            if(month>11){
-                this.endMonth = month-11;
-                this.endYear = year +1;
-            }else{
-                this.endMonth = month+1;
-                this.endYear = year;
-            }
-        }else{
-            this.endDay = day + 2;
-            this.endMonth=month;
-            this.endYear=year;
-        }
+    public void setExpiredDate(int day, int month, int year){
+        // Creating a Calendar for the current date
+        Calendar c = Calendar.getInstance();
+        c.set(year, month, day);
+
+        // Creating a Date for the expiry date
+        Date d = new Date(c.getTime().getTime() + 2*24*60*60*1000);
+        // Creating a Calendar for the expiry date
+        Calendar newC = Calendar.getInstance();
+        newC.setTime(d);
+
+        // Setting the object expiry date values
+        this.endYear = newC.get(Calendar.YEAR);
+        this.endMonth = newC.get(Calendar.MONTH);
+        this.endDay = newC.get(Calendar.DATE);
+
 
     }
 
@@ -68,9 +72,11 @@ public class Recipient {
         this.isOpen = false;
     }
 
-    public boolean getOpenStatus(){
+    public boolean getIsOpen(){
         return this.isOpen;
     }
+    public boolean getIsAccepted(){ return this.isAccepted;}
+    public String getDonorEmail(){return this.donorEmail;}
 
     public int getAcceptDay(){
         return this.acceptDay;

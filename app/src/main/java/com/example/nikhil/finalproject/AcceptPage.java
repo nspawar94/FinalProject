@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -37,7 +38,7 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
         buttonNo.setOnClickListener(this);
         buttonYes.setOnClickListener(this);
 
-        recipientInfo =  getIntent().getStringExtra("text_value");
+        recipientInfo =  getIntent().getStringExtra("Recipient ID");
     }
 
 
@@ -51,13 +52,14 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
         } else if (view == buttonYes){
             final FirebaseUser user = mAuth.getCurrentUser();// donor
 
-            final DatabaseReference myRefR = database.getReference("Recipient");
-            String job ="123";//recipient ID
+            final DatabaseReference myRefR = database.getReference("Recipient").child(recipientInfo);
 
             //create new donation related to this request, update recipient status, update user status
-            myRefR.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    //update recipient status
+            myRefR.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
+
                     String editKey = dataSnapshot.getKey();
                     int year,month,day;
                     Calendar c = Calendar.getInstance();
@@ -66,29 +68,13 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
                     month = c.get(Calendar.MONTH);
                     day = c.get(Calendar.DATE);
 
-                    myRefR.child(editKey).child("isAccepted").setValue(true);
-                    myRefR.child(editKey).child("donorEmail").setValue(user.getEmail());
-                    myRefR.child(editKey).child("acceptDay").setValue(day);
-                    myRefR.child(editKey).child("acceptMonth").setValue(month);
-                    myRefR.child(editKey).child("acceptYear").setValue(year);
+                    thisRecipient.isAccepted = true;
+                    thisRecipient.donorEmail = user.getEmail();
+                    thisRecipient.acceptDay = day;
+                    thisRecipient.acceptMonth = month;
+                    thisRecipient.acceptYear = year;
 
-
-
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                    myRefR.setValue(thisRecipient);
                 }
 
                 @Override
@@ -96,7 +82,6 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
 
                 }
             });
-
             Intent intentRequestDashboard = new Intent(this, RequestDashboard.class);
             startActivity(intentRequestDashboard);
         }
