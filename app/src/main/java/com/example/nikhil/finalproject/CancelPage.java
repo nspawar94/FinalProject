@@ -43,10 +43,6 @@ public class CancelPage extends AppCompatActivity implements View.OnClickListene
             startActivity(intentRequestDashboard);
 
         } else if (view == buttonYes){
-            //Recipient r = new Recipient(get from recycler view)// recipient
-            //r.setAccepted(true);
-            //r.setDonorEmail(user.getEmail());
-
             final DatabaseReference myRefR = database.getReference("Recipient");
             String job = "456"; //recipient ID
 
