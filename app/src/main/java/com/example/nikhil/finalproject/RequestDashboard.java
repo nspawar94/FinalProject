@@ -3,6 +3,8 @@ package com.example.nikhil.finalproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +41,7 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
         recipients = new ArrayList<>();
         initRecyclerView();
         getRecipients();
-      //  getAcceptDetail();
+        //getAcceptDetail();
         mAuth = FirebaseAuth.getInstance();
 
         textViewAcptDetail = findViewById(R.id.textViewAcptDetail);
@@ -47,21 +50,25 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
 
     }
 
-  /*  private void getAcceptDetail(){
+   private void getAcceptDetail(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference acceptDetailmyRef = database.getReference("Recipient");
 
-        String showAcceptEmail = mAuth.getCurrentUser().getEmail();
-        Boolean showAcceptisOpen = Boolean.TRUE;
-        Boolean showAcceptisAccept = Boolean.TRUE;
+        final String showAcceptEmail = mAuth.getCurrentUser().getEmail();
 
-        acceptDetailmyRef.orderByChild("donorEmail").equalTo(showAcceptEmail).orderByChild("isOpen").equalTo(showAcceptisOpen).orderByChild("isAccepted").equalTo(showAcceptisAccept).limitToLast(1).addChildEventListener(new ChildEventListener() {
+        acceptDetailmyRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String showacceptKey = dataSnapshot.getKey();
+                for (DataSnapshot child: dataSnapshot.getChildren()){
+                    Recipient showAcceptRecipient = child.getValue(Recipient.class);
 
-                Recipient showacceptRecipient = dataSnapshot.getValue(Recipient.class);
-                textViewAcptDetail.setText("Location: " + showacceptRecipient.location + "\nPatient Name: " + showacceptRecipient.fname);
+                    if (showAcceptRecipient.getIsOpen()==true&&showAcceptRecipient.getIsAccepted()==true&&showAcceptRecipient.getDonorEmail().equals(showAcceptEmail)){
+                        textViewAcptDetail.setText("Location: " + showAcceptRecipient.location + "\nPatient Name: " + showAcceptRecipient.fname);
+                    }
+
+
+            }
+
             }
 
             @Override
@@ -86,9 +93,7 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
         });
 
 
-
-
-    }*/
+    }
     private void getRecipients() {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

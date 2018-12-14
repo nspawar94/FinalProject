@@ -73,6 +73,7 @@ public class Recipient {
         return this.isOpen;
     }
     public boolean getIsAccepted(){ return this.isAccepted;}
+    public String getDonorEmail(){return this.donorEmail;}
 
     public int getAcceptDay(){
         return this.acceptDay;
