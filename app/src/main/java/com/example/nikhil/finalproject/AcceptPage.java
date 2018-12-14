@@ -51,7 +51,6 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
 
         } else if (view == buttonYes){
             final FirebaseUser user = mAuth.getCurrentUser();// donor
-
             final DatabaseReference myRefR = database.getReference("Recipient").child(recipientInfo);
 
             //create new donation related to this request, update recipient status, update user status
@@ -60,20 +59,15 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
 
-                    String editKey = dataSnapshot.getKey();
                     int year,month,day;
                     Calendar c = Calendar.getInstance();
-
                     year = c.get(Calendar.YEAR);
                     month = c.get(Calendar.MONTH);
                     day = c.get(Calendar.DATE);
 
-                    thisRecipient.isAccepted = true;
-                    thisRecipient.donorEmail = user.getEmail();
-                    thisRecipient.acceptDay = day;
-                    thisRecipient.acceptMonth = month;
-                    thisRecipient.acceptYear = year;
-
+                    thisRecipient.setAccepted(true);
+                    thisRecipient.setDonorEmail(user.getEmail());
+                    thisRecipient.setAcceptDate(day,month,year);
                     myRefR.setValue(thisRecipient);
                 }
 

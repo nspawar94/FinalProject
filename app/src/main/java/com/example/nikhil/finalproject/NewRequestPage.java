@@ -25,9 +25,10 @@ import java.util.Calendar;
 public class NewRequestPage extends AppCompatActivity implements View.OnClickListener {
     EditText editTextfname ,editTextlname, editTextcomment, editTextAge;
     double age;
-    String bloodTypeSelected,locationSelected;
+    String bloodTypeSelected,locationSelected, recipientInfo;
     Button buttonSubmit;
     Spinner spinnerBloodType,spinnerLocation;
+
 
 
 
@@ -139,6 +140,8 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
                 newRef.setValue(newRequest);
 
                 Intent intentRequestConfirmation = new Intent(this,RequestConfirmPage.class);
+                recipientInfo = newRequest.getRecipientID();
+                intentRequestConfirmation.putExtra("Recipient ID", recipientInfo);
                 startActivity(intentRequestConfirmation);
             }
 

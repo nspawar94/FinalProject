@@ -17,12 +17,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
 
 
 public class CancelPage extends AppCompatActivity implements View.OnClickListener{
 
     Button buttonNo, buttonYes;
     private FirebaseAuth mAuth;
+    String recipientInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,7 @@ public class CancelPage extends AppCompatActivity implements View.OnClickListene
 
         buttonNo.setOnClickListener(this);
         buttonYes.setOnClickListener(this);
+        recipientInfo =  getIntent().getStringExtra("Recipient ID");
     }
 
     @Override
@@ -43,37 +48,26 @@ public class CancelPage extends AppCompatActivity implements View.OnClickListene
             startActivity(intentRequestDashboard);
 
         } else if (view == buttonYes){
-            final DatabaseReference myRefR = database.getReference("Recipient");
-            String job = "456"; //recipient ID
+            final DatabaseReference myRefR = database.getReference("Recipient").child(recipientInfo);
 
             //update status of this recipient to NOT accepted
-            myRefR.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
+            //create new donation related to this request, update recipient status, update user status
+            myRefR.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
                     String editKey = dataSnapshot.getKey();
-                    myRefR.child(editKey).child("isAccepted").setValue(false);
-                    myRefR.child(editKey).child("donorEmail").setValue(null);
-                }
 
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                    thisRecipient.setAccepted(false);
+                    thisRecipient.setDonorEmail("");
+                    myRefR.setValue(thisRecipient);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }});
+                }
+            });
             Intent intentRequestDashboard = new Intent(this, RequestDashboard.class);
             startActivity(intentRequestDashboard);
         }

@@ -10,12 +10,14 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +27,7 @@ import java.util.Calendar;
 public class ExtendRequestPage extends AppCompatActivity implements View.OnClickListener {
 
     Button buttonExtendRequest, buttonCloseRequest;
+    String recipientInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,52 +39,34 @@ public class ExtendRequestPage extends AppCompatActivity implements View.OnClick
 
         buttonExtendRequest.setOnClickListener(this);
         buttonCloseRequest.setOnClickListener(this);
+        recipientInfo =  getIntent().getStringExtra("Recipient ID");
     }
 
     @Override
     public void onClick(View v) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRefR = database.getReference("Recipient");
+        final DatabaseReference myRefR = database.getReference("Recipient").child(recipientInfo);
 
         if (v == buttonCloseRequest){
             Intent intentClosePage = new Intent(this,CloseRequestPage.class);
+            intentClosePage.putExtra("Recipient ID", recipientInfo);
+            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             startActivity(intentClosePage);
         } else if (v == buttonExtendRequest){
-            String job = "123456";//get request IDfrom page before
 
-            ChildEventListener childEventListener = myRefR.orderByChild("UID").equalTo(job).addChildEventListener(new ChildEventListener() {
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    String editKey = dataSnapshot.getKey();
-                    Recipient findR =dataSnapshot.getValue(Recipient.class);
+            myRefR.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
 
+                    int year,month,day;
                     Calendar c = Calendar.getInstance();
-                    int day, month, year;
                     year = c.get(Calendar.YEAR);
                     month = c.get(Calendar.MONTH);
                     day = c.get(Calendar.DATE);
-
-                    findR.setExpiredDate(day,month,year);
-
-                    myRefR.child(editKey).child("endDay").setValue(day);
-                    myRefR.child(editKey).child("endMonth").setValue(month);
-                    myRefR.child(editKey).child("endYear").setValue(year);
+                    thisRecipient.setExpiredDate(day,month,year);
+                    myRefR.setValue(thisRecipient);
                 }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -89,7 +74,11 @@ public class ExtendRequestPage extends AppCompatActivity implements View.OnClick
             });
 
 
+
+
             Intent intentRequestStatus = new Intent(this,RequestStatusPage.class);
+            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
+            intentRequestStatus.putExtra("Recipient ID",recipientInfo);
             startActivity(intentRequestStatus);
         }
 

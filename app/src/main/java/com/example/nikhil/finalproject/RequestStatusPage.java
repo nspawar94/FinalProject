@@ -15,6 +15,7 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
 
     Button buttonRefresh, buttonCloseRequest, buttonReturnHome, buttonExtendRequest, buttonPm ;
     TextView textViewPeopleNotified, textViewPeopleAccepted,textViewPeopleDonatedBefore;
+    String recipientInfo;
 
 
     @Override
@@ -37,6 +38,7 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         buttonExtendRequest.setOnClickListener(this);
         buttonPm.setOnClickListener(this);
 
+        recipientInfo =  getIntent().getStringExtra("Recipient ID");
     }
 
     @Override
@@ -80,14 +82,19 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         if (v == buttonCloseRequest){
             Intent intentCloseRequest = new Intent(this,CloseRequestPage.class);
+            intentCloseRequest.putExtra("Recipient ID", recipientInfo);
+            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             startActivity(intentCloseRequest);
 
         }else if (v == buttonExtendRequest){
             Intent intentExtend = new Intent(this,ExtendRequestPage.class);
+            intentExtend.putExtra("Recipient ID",recipientInfo);
+            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             startActivity(intentExtend);
 
         }else if (v == buttonRefresh){
             Intent intentRefresh = new Intent(RequestStatusPage.this,RequestStatusPage.class);
+            intentRefresh.putExtra("Recipient ID",recipientInfo);
             startActivity(intentRefresh);
 
 
@@ -97,6 +104,7 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
 
         }else if (v == buttonPm){
             Intent intentPm = new Intent(this,DonorMessagePage.class );
+            //supposed to send information to pm page, but for now, dont need to
             startActivity(intentPm);
 
         }

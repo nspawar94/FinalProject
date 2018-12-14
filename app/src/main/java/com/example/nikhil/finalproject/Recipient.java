@@ -46,6 +46,7 @@ public class Recipient {
     }
 
 
+    //set expiry date to 2 days after the input date
     public void setExpiredDate(int day, int month, int year){
         // Creating a Calendar for the current date
         Calendar c = Calendar.getInstance();
@@ -65,19 +66,24 @@ public class Recipient {
 
     }
 
+    public void setIsOpen(boolean isOpen){
+        this.isOpen = isOpen;
+    }
+
+    public void setAcceptDate(int day, int month, int year){
+        this.acceptDay = day;
+        this.acceptMonth = month;
+        this.acceptYear = year;
+    }
+
     public String getLocation(){
         return location;
     }
-    public void setCloseRequest(){
-        this.isOpen = false;
-    }
-
     public boolean getIsOpen(){
         return this.isOpen;
     }
     public boolean getIsAccepted(){ return this.isAccepted;}
     public String getDonorEmail(){return this.donorEmail;}
-
     public int getAcceptDay(){
         return this.acceptDay;
     }
@@ -96,6 +102,7 @@ public class Recipient {
     public int getEndYear(){
         return this.endYear;
     }
+    public String getRecipientID(){return this.recipientID;}
 
 
     }
