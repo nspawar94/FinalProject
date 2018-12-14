@@ -10,7 +10,7 @@ import java.util.Date;
 public class Recipient {
     public String fname, lname, btype, location, story,donorEmail;
     public double age;
-    private boolean isOpen,isAccepted;
+    public boolean isOpen,isAccepted;
     public int acceptDay, acceptMonth, acceptYear;
     public int endDay,endMonth,endYear;
 
