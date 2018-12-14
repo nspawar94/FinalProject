@@ -68,7 +68,7 @@ public class Recipient {
         this.isOpen = false;
     }
 
-    public boolean getOpenStatus(){
+    public boolean getIsOpen(){
         return this.isOpen;
     }
 
