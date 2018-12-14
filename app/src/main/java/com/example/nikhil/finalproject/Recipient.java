@@ -15,7 +15,7 @@ public class Recipient {
     public int endDay,endMonth,endYear;
 
 
-    public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, boolean isAccepted) {
+    public Recipient(String fname, String lname, String btype, String location, String story, double age, boolean isOpen, boolean isAccepted, String donorEmail) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
@@ -24,6 +24,7 @@ public class Recipient {
         this.age = age;
         this.isOpen = isOpen;
         this.isAccepted = isAccepted;
+        this.donorEmail = donorEmail;
     }
 
     public Recipient() {

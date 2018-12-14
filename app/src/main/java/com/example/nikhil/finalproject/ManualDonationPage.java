@@ -137,6 +137,8 @@ public class ManualDonationPage extends AppCompatActivity implements View.OnClic
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                         String editKey = dataSnapshot.getKey();
+                        //Donor findD = dataSnapshot.getValue(Recipient.class);
+
                         //update last donate date
                         myRef2.child(editKey).child("lastDonateDay").setValue(dayFinal);
                         myRef2.child(editKey).child("lastDonateMonth").setValue(monthFinal);

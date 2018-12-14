@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,6 +28,7 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
     String bloodTypeSelected,locationSelected;
     Button buttonSubmit;
     Spinner spinnerBloodType,spinnerLocation;
+
 
 
     @Override
@@ -53,6 +55,8 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
 
         buttonSubmit = findViewById(R.id.buttonSubmit);
         buttonSubmit.setOnClickListener(this);
+
+
 
     }
 
@@ -125,7 +129,7 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
                 month = c.get(Calendar.MONTH);
                 day = c.get(Calendar.DATE);
 
-                Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age,true,false);
+                Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,locationSelected,story,age,true,false,"");
                 //newRequest.setExpiredDate(day,month,year);
                 myRef.push().setValue(newRequest);
 
