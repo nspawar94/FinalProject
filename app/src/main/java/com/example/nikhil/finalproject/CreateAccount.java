@@ -99,11 +99,11 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
                                     currentMonth = c.get(Calendar.MONTH);
                                     currentYear= c.get(Calendar.YEAR);
 
-                                    User newUser = new User(fname,lname,genderSelected,bloodTypeSelected,age,email);
-                                    newUser.setLastDonate(currentDay,currentMonth,currentYear);
-                                    myRef.push().setValue(newUser);
 
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    DatabaseReference newRef = myRef.push();
+                                    User newUser = new User(fname,lname,genderSelected,bloodTypeSelected,age,email,newRef.getKey());
+                                    newUser.setLastDonate(currentDay,currentMonth,currentYear);
+                                    newRef.setValue(newUser);
                                     Intent intentNext = new Intent(CreateAccount.this, TermsOfUse.class);
                                     startActivity(intentNext);
                                 } else {

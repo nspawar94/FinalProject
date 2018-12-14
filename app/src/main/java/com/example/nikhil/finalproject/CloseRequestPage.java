@@ -56,13 +56,14 @@ public class CloseRequestPage extends AppCompatActivity implements View.OnClickL
                         String location = findR.getLocation();
                         String donateType = "urgent";
 
-                        Donor urgentDonor = new Donor(location,donateType,findR.donorEmail);
+                        DatabaseReference newRef = myRefD.push();
+                        Donor urgentDonor = new Donor(location,donateType,findR.donorEmail,myRefD.getKey());
                         final int year,month,day;
                         day = findR.getAcceptDay();
                         month = findR.getAcceptMonth();
                         year = findR.getAcceptYear();
                         urgentDonor.setDonateDate(day,month,year);
-                        myRefD.push().setValue(urgentDonor);
+                        newRef.setValue(urgentDonor);
 
                         //update user status
                         myRefU.orderByChild("email").equalTo(findR.donorEmail).addChildEventListener(new ChildEventListener() {

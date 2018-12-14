@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Intent intentAccept = new Intent(mContext, AcceptPage.class);
                 Recipient r = recipients.get(i);
-                recipientinfo = r.recipientID; //change this to get recipient info which is clicked
+                recipientinfo = r.recipientID;
                 intentAccept.putExtra("Recipient ID", recipientinfo);
 
                 mContext.startActivity(intentAccept);
@@ -53,6 +53,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.buttonCant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intentAccept = new Intent(mContext, AcceptPage.class);
+                Recipient r = recipients.get(i);
+                recipientinfo = r.recipientID;
+                intentAccept.putExtra("Recipient ID", recipientinfo);
+
                 Intent intentCant = new Intent(mContext, CancelPage.class );
                 mContext.startActivity(intentCant);
             }

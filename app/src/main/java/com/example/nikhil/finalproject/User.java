@@ -4,18 +4,19 @@ import java.util.Date;
 
 public class User {
 
-    public String fname, lname, gender, btype, email;
+    public String fname, lname, gender, btype, email,userID;
     public double age;
     public int lastDonateDay, lastDonateMonth,lastDonateYear;
     public int nextDonateDay, nextDonateMonth,nextDonateYear;
 
-    public User(String fname, String lname, String gender, String btype, double age, String email) {
+    public User(String fname, String lname, String gender, String btype, double age, String email,String userID) {
         this.fname = fname;
         this.lname = lname;
         this.gender = gender;
         this.btype = btype;
         this.age = age;
         this.email=email;
+        this.userID = userID;
     }
 
     public User() {
