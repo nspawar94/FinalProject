@@ -51,18 +51,18 @@ public class DonorProfilePage extends AppCompatActivity implements View.OnClickL
         donorHistory = new ArrayList<>();
         initRecyclerView();
         mAuth = FirebaseAuth.getInstance();
-        getLocation();
+        getdDonationHistory();
 
     }
 
-    private void getLocation (){
+    private void getdDonationHistory (){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference locationRef = database.getReference("Donor");
+        DatabaseReference donationRef = database.getReference("Donor");
 
         String showDonation = mAuth.getCurrentUser().getEmail();
 
-        locationRef.orderByChild("donorEmail").equalTo(showDonation).addChildEventListener(new ChildEventListener() {
+        donationRef.orderByChild("donorEmail").equalTo(showDonation).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Donor donor = dataSnapshot.getValue(Donor.class);

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,10 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
     private RecyclerViewAdapter recyclerViewAdapter;
     private FirebaseAuth mAuth;
     TextView textViewAcptDetail;
+    String userBlood, cancelAccept;
+    Button buttonCancel;
+
+
 
 
 
@@ -38,11 +43,18 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_dashboard);
+        mAuth = FirebaseAuth.getInstance();
+
+        buttonCancel = findViewById(R.id.buttonCancel);
+        buttonCancel.setOnClickListener(this);
+
+
         recipients = new ArrayList<>();
         initRecyclerView();
         textViewAcptDetail = findViewById(R.id.textViewAcptDetail);
-        mAuth = FirebaseAuth.getInstance();
-        getRecipients();
+
+        getUserBloodtype();
+        //getRecipients();
         getAcceptDetail();
 
 
@@ -68,42 +80,102 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
                     Recipient showAcceptRecipient = child.getValue(Recipient.class);
 
                     if (showAcceptRecipient.getIsOpen()==true&&showAcceptRecipient.getIsAccepted()==true&&showAcceptRecipient.getDonorEmail().equals(showAcceptEmail)){
+                        String cancelAccept = showAcceptRecipient.getRecipientID();
+
                         textViewAcptDetail.setText("Location: " + showAcceptRecipient.location + "\nPatient Name: " + showAcceptRecipient.fname);
                     }
 
-
             }
 
             }
         });
-
 
     }
-    private void getRecipients() {
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference recipientsmyRef = database.getReference("Recipient");
+    public void getUserBloodtype() {
 
-        // Read from the database
-        recipientsmyRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference usermyRef = database.getReference("User");
+        String userDetail = mAuth.getCurrentUser().getEmail();
+        String userID, editKey;
+
+        usermyRef.orderByChild("email").equalTo(userDetail).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-               for(DataSnapshot child : dataSnapshot.getChildren()){
-                   Recipient recipient = child.getValue(Recipient.class);
-                   recipients.add(recipient);
-               }
-               recyclerViewAdapter.notifyDataSetChanged();;
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String editKey = dataSnapshot.getKey();
+
+                DatabaseReference usermyRef2 = database.getReference("User").child(editKey);
+                usermyRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        User userBlood = dataSnapshot.getValue(User.class);
+                        String thisUserBlood = userBlood.getBtype();
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference recipientsmyRef = database.getReference("Recipient");
+
+                        // Read from the database
+                        recipientsmyRef.orderByChild("btype").equalTo(thisUserBlood).addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                Recipient recipient = dataSnapshot.getValue(Recipient.class);
+                                recipients.add(recipient);
+                                recyclerViewAdapter.notifyDataSetChanged();
+
+                /*old code >> for(DataSnapshot child : dataSnapshot.getChildren()){
+            Recipient recipient = child.getValue(Recipient.class);
+            recipients.add(recipient)*/
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
 
 
     }
@@ -156,6 +228,13 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        if (v == buttonCancel){
+            Intent intentCancel = new Intent(this,CancelPage.class);
+            intentCancel.putExtra("Recipient ID", cancelAccept);
+            startActivity(intentCancel);
 
+
+
+        }
     }
 }

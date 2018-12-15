@@ -132,7 +132,7 @@
         android:layout_marginStart="75dp"
         android:layout_marginTop="430dp"
 
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical"
         android:text="Accept Detail"
         android:textSize="18sp"
         android:layout_marginLeft="75dp"

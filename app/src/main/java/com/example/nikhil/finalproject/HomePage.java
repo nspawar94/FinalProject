@@ -3,6 +3,7 @@ package com.example.nikhil.finalproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,9 +38,10 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         recipients = new ArrayList<>();
+        mAuth = FirebaseAuth.getInstance();
         initRecyclerView();
         getRecipients();
-       // getAcceptDetail();
+        getAcceptDetail();
 
         buttonNewRequest = findViewById(R.id.buttonNewRequest);
         buttonDonationHomepage = findViewById(R.id.buttonDonationHomePage);
@@ -51,51 +53,39 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         buttonDonationHomepage.setOnClickListener(this);
         buttonCurrentRequest.setOnClickListener(this);
 
-        mAuth = FirebaseAuth.getInstance();
+
 
     }
 
-   /* private void getAcceptDetail(){
+    private void getAcceptDetail(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference acceptDetailmyRef = database.getReference("Recipient");
 
-        String showAcceptEmail = mAuth.getCurrentUser().getEmail();
-        Boolean showAcceptisOpen = Boolean.TRUE;
-        Boolean showAcceptisAccept = Boolean.TRUE;
+        final String showAcceptEmail = mAuth.getCurrentUser().getEmail();
 
-
-        acceptDetailmyRef.orderByChild("donorEmail").equalTo(showAcceptEmail).orderByChild("isOpen").equalTo(showAcceptisOpen).orderByChild("isAccepted").equalTo(showAcceptisAccept).limitToLast(1).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String showacceptKey = dataSnapshot.getKey();
-
-                Recipient showacceptRecipient = dataSnapshot.getValue(Recipient.class);
-                textViewAcptDetail.setText("Location: " + showacceptRecipient.location + "\nPatient Name: " + showacceptRecipient.fname);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
+        acceptDetailmyRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot child: dataSnapshot.getChildren()){
+                    Recipient showAcceptRecipient = child.getValue(Recipient.class);
+
+                    if (showAcceptRecipient.getIsOpen()==true&&showAcceptRecipient.getIsAccepted()==true&&showAcceptRecipient.getDonorEmail().equals(showAcceptEmail)){
+                        textViewAcptDetail.setText("Location: " + showAcceptRecipient.location + "\nPatient Name: " + showAcceptRecipient.fname);
+                    }
+
+
+                }
 
             }
         });
 
 
-    } */
+    }
 
     private void getRecipients() {
 
