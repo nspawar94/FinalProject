@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Recipient {
-    public String fname, lname, btype, location, story,donorEmail,recipientID;
+    public String fname, lname, btype, location, story,donorEmail,recipientID, recipientEmail;
     public double age;
     public boolean isOpen,isAccepted;
     public int acceptDay, acceptMonth, acceptYear;
@@ -19,7 +19,7 @@ public class Recipient {
 
     public Recipient(String fname, String lname, String btype,
                      String location, String story, double age, boolean isOpen,
-                     boolean isAccepted, String donorEmail, String recipientID) {
+                     boolean isAccepted, String donorEmail, String recipientID, String recipientEmail) {
         this.fname = fname;
         this.lname = lname;
         this.btype = btype;
@@ -30,15 +30,15 @@ public class Recipient {
         this.isAccepted = isAccepted;
         this.donorEmail = donorEmail;
         this.recipientID = recipientID;
+        this.recipientEmail = recipientEmail;
+
     }
 
     public Recipient() {
         }
 
-    public void setAccepted(boolean b){
-        if(b == true){
-            this.isAccepted = true;
-        }else this.isAccepted = false;
+    public void setIsAccepted(boolean b){
+            this.isAccepted = b;
     }
 
     public void setDonorEmail(String donorEmail){
@@ -75,7 +75,9 @@ public class Recipient {
         this.acceptMonth = month;
         this.acceptYear = year;
     }
-
+    public String getRecipientEmail(){
+        return this.recipientEmail;
+    }
     public String getLocation(){
         return location;
     }

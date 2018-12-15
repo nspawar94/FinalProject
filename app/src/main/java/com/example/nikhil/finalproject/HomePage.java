@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,7 +56,6 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         buttonCurrentRequest.setOnClickListener(this);
 
 
-
     }
 
     private void getAcceptDetail(){
@@ -92,27 +93,40 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener{
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference recipientsmyRef = database.getReference("Recipient");
 
+        final String showDonation = mAuth.getCurrentUser().getEmail();
+
+
         // Read from the database
-        recipientsmyRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        // Have to filter "isOpen = true"
+
+        recipientsmyRef.orderByChild("recipientEmail").equalTo(showDonation).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                for(DataSnapshot child : dataSnapshot.getChildren()){
-                    Recipient recipient = child.getValue(Recipient.class);
-                    recipients.add(recipient);
-                }
-                recyclerViewAdapter.notifyDataSetChanged();;
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Recipient recipient = dataSnapshot.getValue(Recipient.class);
+                recipients.add(recipient);
+                recyclerViewAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
-
 
     }
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -45,8 +46,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Recipient r = recipients.get(i);
                 recipientinfo = r.getRecipientID();
                 intentAccept.putExtra("Recipient ID", recipientinfo);
-
                 mContext.startActivity(intentAccept);
+
             }
         });
 

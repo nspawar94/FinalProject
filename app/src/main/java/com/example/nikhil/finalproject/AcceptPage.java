@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +27,6 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
     Button buttonYes, buttonNo;
     private FirebaseAuth mAuth;
     String recipientInfo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +37,9 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
 
         buttonNo.setOnClickListener(this);
         buttonYes.setOnClickListener(this);
-
         recipientInfo =  getIntent().getStringExtra("Recipient ID");
+        mAuth = FirebaseAuth.getInstance();
     }
-
 
     @Override
     public void onClick(View view) {
@@ -50,14 +49,17 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
             startActivity(intentRequestDashboard);
 
         } else if (view == buttonYes){
-            final FirebaseUser user = mAuth.getCurrentUser();// donor
+            //final FirebaseUser user = mAuth.getCurrentUser();// donor
             final DatabaseReference myRefR = database.getReference("Recipient").child(recipientInfo);
 
             //create new donation related to this request, update recipient status, update user status
             myRefR.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String user = mAuth.getCurrentUser().getEmail();// donor
+                    Toast.makeText(AcceptPage.this,user,Toast.LENGTH_LONG).show();
                     Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
+                    String editKey = dataSnapshot.getKey();
 
                     int year,month,day;
                     Calendar c = Calendar.getInstance();
@@ -65,8 +67,8 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
                     month = c.get(Calendar.MONTH);
                     day = c.get(Calendar.DATE);
 
-                    thisRecipient.setAccepted(true);
-                    thisRecipient.setDonorEmail(user.getEmail());
+                    thisRecipient.setIsAccepted(true);
+                    thisRecipient.setDonorEmail(user);
                     thisRecipient.setAcceptDate(day,month,year);
                     myRefR.setValue(thisRecipient);
                 }

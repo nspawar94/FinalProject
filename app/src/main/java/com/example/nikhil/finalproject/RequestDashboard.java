@@ -33,7 +33,7 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
     private FirebaseAuth mAuth;
     TextView textViewAcptDetail;
     String userBlood, cancelAccept;
-    Button buttonCancel;
+    //Button buttonCancel;
 
 
 
@@ -45,8 +45,8 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_request_dashboard);
         mAuth = FirebaseAuth.getInstance();
 
-        buttonCancel = findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener(this);
+        //buttonCancel = findViewById(R.id.buttonCancel);
+        //buttonCancel.setOnClickListener(this);
 
 
         recipients = new ArrayList<>();
@@ -115,6 +115,7 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
                         DatabaseReference recipientsmyRef = database.getReference("Recipient");
 
                         // Read from the database
+                        // Have to filter "isOpen = true"
                         recipientsmyRef.orderByChild("btype").equalTo(thisUserBlood).addChildEventListener(new ChildEventListener() {
                             @Override
                             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -228,13 +229,13 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if (v == buttonCancel){
+        /*if (v == buttonCancel){
             Intent intentCancel = new Intent(this,CancelPage.class);
             intentCancel.putExtra("Recipient ID", cancelAccept);
             startActivity(intentCancel);
 
 
 
-        }
+        }*/
     }
 }

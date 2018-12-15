@@ -115,27 +115,17 @@
         android:layout_marginTop="260dp" />
 
     <TextView
-        android:id="@+id/textViewAcptCount"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="430dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="1"
-        android:textSize="24sp" />
-
-    <TextView
         android:id="@+id/textViewAcptDetail"
-        android:layout_width="280dp"
+        android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_alignStart="@+id/textViewAcptCount"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="430dp"
 
         android:gravity="center_vertical"
         android:text="Accept Detail"
         android:textSize="18sp"
-        android:layout_marginLeft="75dp"
+        android:layout_marginLeft="17dp"
         android:layout_alignLeft="@+id/textViewAcptCount" />
 
 </RelativeLayout>

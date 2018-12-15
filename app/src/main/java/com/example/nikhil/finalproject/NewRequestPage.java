@@ -28,6 +28,7 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
     String bloodTypeSelected,locationSelected, recipientInfo;
     Button buttonSubmit;
     Spinner spinnerBloodType,spinnerLocation;
+    private FirebaseAuth mAuth;
 
 
 
@@ -36,6 +37,8 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_request_page);
+
+        mAuth = FirebaseAuth.getInstance();
 
         editTextfname=findViewById(R.id.editfname);
         editTextlname=findViewById(R.id.editlname);
@@ -104,6 +107,7 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Recipient");
+        String recipientEmail = mAuth.getCurrentUser().getEmail();
 
         String fname = editTextfname.getText().toString();
         String lname = editTextlname.getText().toString();
@@ -134,7 +138,7 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
                 DatabaseReference newRef = myRef.push();
                 // Create the new request object
                 Recipient newRequest = new Recipient(fname,lname,bloodTypeSelected,
-                        locationSelected,story,age,true,false,"",newRef.getKey());
+                        locationSelected,story,age,true,false,"",newRef.getKey(),recipientEmail);
                 newRequest.setExpiredDate(day,month,year);
                 // Write the new request to the database
                 newRef.setValue(newRequest);

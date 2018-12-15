@@ -38,6 +38,7 @@ public class CancelPage extends AppCompatActivity implements View.OnClickListene
         buttonNo.setOnClickListener(this);
         buttonYes.setOnClickListener(this);
         recipientInfo =  getIntent().getStringExtra("Recipient ID");
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -58,7 +59,7 @@ public class CancelPage extends AppCompatActivity implements View.OnClickListene
                     Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
                     String editKey = dataSnapshot.getKey();
 
-                    thisRecipient.setAccepted(false);
+                    thisRecipient.setIsAccepted(false);
                     thisRecipient.setDonorEmail("");
                     myRefR.setValue(thisRecipient);
                 }
