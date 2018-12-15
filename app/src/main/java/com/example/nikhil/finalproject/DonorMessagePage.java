@@ -13,6 +13,8 @@ import android.widget.Toast;
 public class DonorMessagePage extends AppCompatActivity implements View.OnClickListener {
 
     Button buttonReturnRequest;
+    String recipientInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class DonorMessagePage extends AppCompatActivity implements View.OnClickL
 
         buttonReturnRequest = findViewById(R.id.buttonReturnRequest);
         buttonReturnRequest.setOnClickListener(this);
+        recipientInfo =  getIntent().getStringExtra("Recipient ID");
 
     }
 
@@ -66,6 +69,7 @@ public class DonorMessagePage extends AppCompatActivity implements View.OnClickL
 
      if(view == buttonReturnRequest){
          Intent intentReturnRequest = new Intent(this,RequestStatusPage.class);
+         intentReturnRequest.putExtra("Recipient ID", recipientInfo);
          startActivity(intentReturnRequest);
      }
 

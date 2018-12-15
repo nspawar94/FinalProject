@@ -155,6 +155,7 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         }else if (v == buttonPm){
             Intent intentPm = new Intent(this,DonorMessagePage.class );
             //supposed to send information to pm page, but for now, dont need to
+            intentPm.putExtra("Recipient ID", recipientInfo);
             startActivity(intentPm);
 
         }

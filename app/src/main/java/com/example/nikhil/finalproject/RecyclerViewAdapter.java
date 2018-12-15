@@ -25,7 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     RecyclerViewAdapter(ArrayList<Recipient> recipients, Context mContext){
         this.recipients = recipients;
         this.mContext = mContext;
-    }
+}
 
     @NonNull
     @Override
@@ -62,6 +62,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
+        /*viewHolder.buttonStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentStatus = new Intent(mContext, RequestStatusPage.class);
+                Recipient r = recipients.get(i);
+                recipientinfo = r.recipientID;
+                intentStatus.putExtra("Recipient ID", recipientinfo);
+                mContext.startActivity(intentStatus);
+
+            }
+        });*/
 
     }
 
@@ -72,7 +83,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView textViewRequest, textViewLocation, textViewPosting;
-        Button buttonAccept, buttonCant;
+        Button buttonAccept, buttonCant, buttonStatus;
         RelativeLayout parentLayout;
 
 
@@ -83,6 +94,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             textViewPosting = itemView.findViewById(R.id.textViewposting);
             buttonAccept = itemView.findViewById(R.id.buttonAccept);
             buttonCant = itemView.findViewById(R.id.buttonCant);
+            buttonStatus = itemView.findViewById(R.id.buttonStatus);
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
         }

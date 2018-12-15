@@ -57,7 +57,7 @@ public class AcceptPage extends AppCompatActivity implements View.OnClickListene
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String user = mAuth.getCurrentUser().getEmail();// donor
-                    Toast.makeText(AcceptPage.this,user,Toast.LENGTH_LONG).show();
+                    Toast.makeText(AcceptPage.this,"Confirm",Toast.LENGTH_LONG).show();
                     Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
                     String editKey = dataSnapshot.getKey();
 
