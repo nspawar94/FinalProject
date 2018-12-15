@@ -20,7 +20,6 @@ public class RequestConfirmPage extends AppCompatActivity implements View.OnClic
         buttonViewReal.setOnClickListener(this);
 
         recipientInfo =  getIntent().getStringExtra("Recipient ID");
-
     }
 
     @Override

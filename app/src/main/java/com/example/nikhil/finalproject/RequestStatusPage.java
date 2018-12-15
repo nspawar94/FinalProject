@@ -1,8 +1,10 @@
 package com.example.nikhil.finalproject;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,11 +13,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
+
 public class RequestStatusPage extends AppCompatActivity implements View.OnClickListener {
 
     Button buttonRefresh, buttonCloseRequest, buttonReturnHome, buttonExtendRequest, buttonPm ;
     TextView textViewPeopleNotified, textViewPeopleAccepted,textViewPeopleDonatedBefore;
-    String recipientInfo;
+    String recipientInfo, neededBType;
+    int countNotified, countAccept, countDonateBefore;
 
 
     @Override
@@ -39,6 +50,45 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         buttonPm.setOnClickListener(this);
 
         recipientInfo =  getIntent().getStringExtra("Recipient ID");
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        //find out what blood type this request needs
+        database.getReference("Recipient").child(recipientInfo)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Recipient thisRecipient = dataSnapshot.getValue(Recipient.class);
+                        neededBType = (String) thisRecipient.getBtype();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+        final DatabaseReference myRefU = database.getReference("User");
+        //find out how many have been notified
+        myRefU.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    User countUser = snapshot.getValue(User.class);
+                    String userBType = (String) countUser.getBtype();
+                    if(userBType.equals(neededBType)){
+                        countNotified+=1;
+                    }
+                }
+                textViewPeopleNotified.setText(Integer.toString(countNotified));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+
+
+
+
+
     }
 
     @Override

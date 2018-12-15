@@ -103,6 +103,7 @@ public class Recipient {
         return this.endYear;
     }
     public String getRecipientID(){return this.recipientID;}
+    public String getBtype(){return this.btype;}
 
 
     }
