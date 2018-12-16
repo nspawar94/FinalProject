@@ -89,7 +89,7 @@ public class CloseRequestPage extends AppCompatActivity implements View.OnClickL
             startActivity(intentHomePage);
         } else if (v == buttonBackToRequest){
             Intent intentCloseRequest = new Intent(this,RequestStatusPage.class);
-            intentCloseRequest.putExtra("Recipient ID", recipientInfo);
+            //intentCloseRequest.putExtra("Recipient ID", recipientInfo);
             startActivity(intentCloseRequest);
         }
 

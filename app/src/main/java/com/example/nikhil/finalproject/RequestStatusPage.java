@@ -133,13 +133,13 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         if (v == buttonCloseRequest){
             Intent intentCloseRequest = new Intent(this,CloseRequestPage.class);
             intentCloseRequest.putExtra("Recipient ID", recipientInfo);
-            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             startActivity(intentCloseRequest);
 
         }else if (v == buttonExtendRequest){
             Intent intentExtend = new Intent(this,ExtendRequestPage.class);
             intentExtend.putExtra("Recipient ID",recipientInfo);
-            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             startActivity(intentExtend);
 
         }else if (v == buttonRefresh){

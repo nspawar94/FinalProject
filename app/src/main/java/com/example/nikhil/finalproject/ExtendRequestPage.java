@@ -26,7 +26,7 @@ import java.util.Calendar;
 
 public class ExtendRequestPage extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonExtendRequest, buttonCloseRequest;
+    Button buttonExtendRequest, buttonReturnToRequestStatus;
     String recipientInfo;
 
     @Override
@@ -35,10 +35,12 @@ public class ExtendRequestPage extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_extend_request_page);
 
         buttonExtendRequest = findViewById(R.id.buttonExtendRequest);
-        buttonCloseRequest = findViewById(R.id.buttonCloseRequest);
+        //buttonCloseRequest = findViewById(R.id.buttonCloseRequest);
+        buttonReturnToRequestStatus = findViewById(R.id.buttonReturnToRequestStatus);
 
         buttonExtendRequest.setOnClickListener(this);
-        buttonCloseRequest.setOnClickListener(this);
+        //buttonCloseRequest.setOnClickListener(this);
+        buttonReturnToRequestStatus.setOnClickListener(this);
         recipientInfo =  getIntent().getStringExtra("Recipient ID");
     }
 
@@ -47,11 +49,17 @@ public class ExtendRequestPage extends AppCompatActivity implements View.OnClick
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRefR = database.getReference("Recipient").child(recipientInfo);
 
-        if (v == buttonCloseRequest){
-            Intent intentClosePage = new Intent(this,CloseRequestPage.class);
+        /*if (v == buttonCloseRequest) {
+            Intent intentClosePage = new Intent(this, CloseRequestPage.class);
             intentClosePage.putExtra("Recipient ID", recipientInfo);
-            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
-            startActivity(intentClosePage);
+            Toast.makeText(this, recipientInfo, Toast.LENGTH_LONG).show();
+            startActivity(intentClosePage);*/
+
+         if (v == buttonReturnToRequestStatus) {
+            Intent intentReturn = new Intent(this, RequestStatusPage.class);
+            intentReturn.putExtra("Recipient ID", recipientInfo);
+            startActivity(intentReturn);
+
         } else if (v == buttonExtendRequest){
 
             myRefR.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -77,7 +85,7 @@ public class ExtendRequestPage extends AppCompatActivity implements View.OnClick
 
 
             Intent intentRequestStatus = new Intent(this,RequestStatusPage.class);
-            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             intentRequestStatus.putExtra("Recipient ID",recipientInfo);
             startActivity(intentRequestStatus);
         }
