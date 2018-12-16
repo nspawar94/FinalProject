@@ -42,17 +42,17 @@
         android:layout_width="315dp"
         android:layout_height="43dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="37dp"
         android:text="(+) New Donation"
         android:textSize="36sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="16dp"
-        tools:text="(+) New Donation"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="28dp" />
+        tools:text="(+) New Donation" />
 
     <TextView
         android:id="@+id/textDate"
@@ -121,6 +121,18 @@
         android:textSize="24sp"
         android:layout_alignLeft="@+id/textView3"
         android:layout_marginLeft="4dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 
 
 </RelativeLayout>

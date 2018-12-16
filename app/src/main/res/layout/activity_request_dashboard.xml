@@ -17,14 +17,14 @@
         android:layout_marginStart="14dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="84dp"
-        android:text="You have agreed to fill this request"
+        android:text="You have agreed to fill this request:"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="287dp"
-        android:layout_height="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -75,5 +75,16 @@
         android:textSize="18sp"
         tools:text="Accept Detail" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 
 </RelativeLayout>

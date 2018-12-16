@@ -85,10 +85,6 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         });
 
 
-
-
-
-
     }
 
     @Override
@@ -127,6 +123,7 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onClick(View v) {

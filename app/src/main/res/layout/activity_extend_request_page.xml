@@ -61,14 +61,14 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="269dp"
-        android:layout_height="64dp"
+        android:layout_width="291dp"
+        android:layout_height="148dp"
         android:layout_alignEnd="@+id/textViewExpireTime"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="-25dp"
-        android:layout_marginBottom="237dp"
-        android:text="Would you like to extend the request?"
+        android:layout_marginBottom="201dp"
+        android:text="is about to close based on the time you indicated when you created the request. Would you like to extend the request?"
         android:textSize="24sp" />
 
     <TextView
@@ -81,4 +81,16 @@
         android:layout_marginBottom="-41dp"
         android:text=" will expire at"
         android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 </RelativeLayout>

@@ -40,14 +40,14 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="276dp"
+        android:layout_height="81dp"
         android:layout_below="@+id/textViewPeopleNotified"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="-119dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginLeft="78dp"
+        android:layout_marginTop="-139dp"
         android:text="Real Time Request Result"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -210,5 +210,17 @@
         android:layout_alignBottom="@+id/textViewJustWord"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="3dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 
 </RelativeLayout>

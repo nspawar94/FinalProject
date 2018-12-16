@@ -8,35 +8,35 @@
 
     <Button
         android:id="@+id/buttonNewRequest"
-        android:layout_width="159dp"
-        android:layout_height="73dp"
+        android:layout_width="135dp"
+        android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginLeft="73dp"
+        android:layout_marginTop="22dp"
         android:background="@android:color/holo_red_dark"
         android:text="New Emergency Request"
         android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="31dp"
         tools:layout_editor_absoluteY="29dp" />
 
     <Button
         android:id="@+id/buttonDonationHomePage"
-        android:layout_width="159dp"
-        android:layout_height="73dp"
+        android:layout_width="134dp"
+        android:layout_height="64dp"
         android:layout_alignBottom="@+id/buttonNewRequest"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="17dp"
-        android:layout_marginRight="17dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
         android:layout_marginBottom="0dp"
         android:background="@android:color/holo_green_dark"
         android:text="Donation Homepage"
         android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="207dp"
         tools:layout_editor_absoluteY="29dp" />
 
@@ -127,5 +127,17 @@
         android:textSize="18sp"
         android:layout_marginLeft="17dp"
         android:layout_alignLeft="@+id/textViewAcptCount" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 
 </RelativeLayout>
