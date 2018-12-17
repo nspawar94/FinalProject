@@ -207,12 +207,6 @@ public class RequestDashboard extends AppCompatActivity implements View.OnClickL
         } else if (item.getItemId()==R.id.menuNewRequest) {
             Intent intentNewRequest= new Intent(this, NewRequestPage.class);
             startActivity(intentNewRequest);
-        } else if (item.getItemId()==R.id.menuRequestStatus) {
-            Intent intentRequestStatus = new Intent(this, RequestStatusPage.class);
-            startActivity(intentRequestStatus);
-        } else if (item.getItemId()==R.id.menuDonorMessage) {
-            Intent intentDonorMessage = new Intent(this, DonorMessagePage.class);
-            startActivity(intentDonorMessage);
         } else if (item.getItemId()==R.id.menuDonorProfile) {
             Intent intentDonorProfile = new Intent(this, DonorProfilePage.class);
             startActivity(intentDonorProfile);

@@ -125,12 +125,6 @@ public class DonorProfilePage extends AppCompatActivity implements View.OnClickL
         } else if (item.getItemId()==R.id.menuNewRequest) {
             Intent intentNewRequest= new Intent(this, NewRequestPage.class);
             startActivity(intentNewRequest);
-        } else if (item.getItemId()==R.id.menuRequestStatus) {
-            Intent intentRequestStatus = new Intent(this, RequestStatusPage.class);
-            startActivity(intentRequestStatus);
-        } else if (item.getItemId()==R.id.menuDonorMessage) {
-            Intent intentDonorMessage = new Intent(this, DonorMessagePage.class);
-            startActivity(intentDonorMessage);
         } else if (item.getItemId()==R.id.menuDonorProfile) {
             Toast.makeText(this, "You are here already!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId()==R.id.menuManualDonation) {

@@ -105,11 +105,6 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         } else if (item.getItemId()==R.id.menuNewRequest) {
             Intent intentNewRequest= new Intent(this, NewRequestPage.class);
             startActivity(intentNewRequest);
-        } else if (item.getItemId()==R.id.menuRequestStatus) {
-            Toast.makeText(this, "You are here already!", Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId()==R.id.menuDonorMessage) {
-            Intent intentDonorMessage = new Intent(this, DonorMessagePage.class);
-            startActivity(intentDonorMessage);
         } else if (item.getItemId()==R.id.menuDonorProfile) {
             Intent intentDonorProfile = new Intent(this, DonorProfilePage.class);
             startActivity(intentDonorProfile);
