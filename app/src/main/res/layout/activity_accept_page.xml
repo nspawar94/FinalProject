@@ -10,11 +10,12 @@
         android:id="@+id/textViewAccept"
         android:layout_width="247dp"
         android:layout_height="150dp"
+        android:layout_alignEnd="@+id/buttonYes"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="102dp"
+        android:layout_marginTop="104dp"
         android:text="I accept this request and will proceed to the designated donation center."
         android:textSize="24sp"
+        app:fontFamily="sans-serif"
         tools:layout_editor_absoluteX="69dp"
         tools:layout_editor_absoluteY="106dp"
         tools:text="I accept this request and will proceed to the designated donation center." />
@@ -41,5 +42,17 @@
         android:layout_marginEnd="75dp"
         android:layout_marginRight="75dp"
         android:text="Yes" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 
 </RelativeLayout>

@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/textViewAccept"
-        android:layout_width="261dp"
+        android:layout_width="302dp"
         android:layout_height="262dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="91dp"
         android:text="You have already accepted another request. Thank you! If you can no longer fill that request please cancel by clicking I Can't on that request before selecting a new request."
         android:textSize="24sp"
         tools:layout_editor_absoluteX="69dp"
@@ -31,5 +31,17 @@
         android:layout_marginBottom="110dp"
         android:text="Ok"
         tools:text="Ok" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 
 </RelativeLayout>

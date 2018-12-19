@@ -81,12 +81,6 @@ public class NewRequestPage extends AppCompatActivity implements View.OnClickLis
             startActivity(intentRequestDashboard);
         } else if (item.getItemId()==R.id.menuNewRequest) {
             Toast.makeText(this, "You are here already!", Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId()==R.id.menuRequestStatus) {
-            Intent intentRequestStatus = new Intent(this, RequestStatusPage.class);
-            startActivity(intentRequestStatus);
-        } else if (item.getItemId()==R.id.menuDonorMessage) {
-            Intent intentDonorMessage = new Intent(this, DonorMessagePage.class);
-            startActivity(intentDonorMessage);
         } else if (item.getItemId()==R.id.menuDonorProfile) {
             Intent intentDonorProfile = new Intent(this, DonorProfilePage.class);
             startActivity(intentDonorProfile);

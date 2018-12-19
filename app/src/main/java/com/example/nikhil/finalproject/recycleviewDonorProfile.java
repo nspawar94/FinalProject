@@ -12,12 +12,21 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDonorProfile.ViewHolder> {
     //data VDO 12:34 min
     private ArrayList<Donor> donorHistory;
     private Context mContext;
+
 
     recycleviewDonorProfile(ArrayList<Donor> donorHistory, Context mContext) {
         this.donorHistory = donorHistory;
@@ -31,6 +40,7 @@ public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDon
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_donorprofilelist, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
+
     }
 
     @Override
@@ -38,17 +48,34 @@ public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDon
         viewHolder.textViewDntLocation.setText(donorHistory.get(i).getLocation());
         viewHolder.textViewDntType.setText(donorHistory.get(i).getDonateType());
         //viewHolder.textViewDntDate.setText(donorHistory.get(i).getCreatedDate());
-        viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                final DatabaseReference donationRef = database.getReference("Donor");
+                Donor r = donorHistory.get(i);
+                donationRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        String deletekey = dataSnapshot.getKey();
+                        donationRef.child(deletekey).setValue(null);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                //if need toast and clickable: VDO 17:00
 
             }
-        });
-
-
-        //if need toast and clickable: VDO 17:00
-
+        });*/
     }
+
 
     @Override
     public int getItemCount() {
@@ -65,7 +92,7 @@ public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDon
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            buttonDelete = itemView.findViewById(R.id.buttonDelete);
+            //buttonDelete = itemView.findViewById(R.id.buttonDelete);
             textViewCount = itemView.findViewById(R.id.textViewCount);
             textViewDntLocation = itemView.findViewById(R.id.textViewDntLocation);
             textViewDntDate = itemView.findViewById(R.id.textViewDntDate);
@@ -79,3 +106,4 @@ public class recycleviewDonorProfile extends RecyclerView.Adapter<recycleviewDon
     }
 
 }
+

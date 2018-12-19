@@ -30,7 +30,7 @@
         android:layout_marginBottom="168dp"
         android:ems="10"
         android:hint="Enter Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/editTextEMail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -9,16 +9,16 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="343dp"
         android:layout_height="255dp"
+        android:layout_alignStart="@+id/textView5"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="126dp"
+        android:layout_marginBottom="128dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="133dp" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="343dp"
-        android:layout_height="85dp"
+        android:layout_width="236dp"
+        android:layout_height="106dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
@@ -41,4 +41,16 @@
         android:layout_marginBottom="56dp"
         android:text="Return to Request"
         tools:text="Return to Request" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 </RelativeLayout>

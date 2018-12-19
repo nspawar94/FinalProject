@@ -11,12 +11,6 @@
         android:id="@+id/menuNewRequest"
         android:title="New Request" />
     <item
-        android:id="@+id/menuRequestStatus"
-        android:title="Request Status" />
-    <item
-        android:id="@+id/menuDonorMessage"
-        android:title="Message Donors" />
-    <item
         android:id="@+id/menuDonorProfile"
         android:title="My Donations" />
     <item

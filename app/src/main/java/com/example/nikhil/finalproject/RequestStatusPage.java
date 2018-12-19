@@ -85,10 +85,6 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         });
 
 
-
-
-
-
     }
 
     @Override
@@ -109,11 +105,6 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         } else if (item.getItemId()==R.id.menuNewRequest) {
             Intent intentNewRequest= new Intent(this, NewRequestPage.class);
             startActivity(intentNewRequest);
-        } else if (item.getItemId()==R.id.menuRequestStatus) {
-            Toast.makeText(this, "You are here already!", Toast.LENGTH_SHORT).show();
-        } else if (item.getItemId()==R.id.menuDonorMessage) {
-            Intent intentDonorMessage = new Intent(this, DonorMessagePage.class);
-            startActivity(intentDonorMessage);
         } else if (item.getItemId()==R.id.menuDonorProfile) {
             Intent intentDonorProfile = new Intent(this, DonorProfilePage.class);
             startActivity(intentDonorProfile);
@@ -128,18 +119,19 @@ public class RequestStatusPage extends AppCompatActivity implements View.OnClick
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onClick(View v) {
         if (v == buttonCloseRequest){
             Intent intentCloseRequest = new Intent(this,CloseRequestPage.class);
             intentCloseRequest.putExtra("Recipient ID", recipientInfo);
-            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             startActivity(intentCloseRequest);
 
         }else if (v == buttonExtendRequest){
             Intent intentExtend = new Intent(this,ExtendRequestPage.class);
             intentExtend.putExtra("Recipient ID",recipientInfo);
-            Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,recipientInfo,Toast.LENGTH_LONG).show();
             startActivity(intentExtend);
 
         }else if (v == buttonRefresh){

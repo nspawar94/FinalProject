@@ -232,7 +232,22 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="14dp"
+        android:background="@android:color/holo_green_dark"
         android:text="Create Account"
-        tools:ignore="UnknownId" />
+        android:textStyle="bold"
+        tools:ignore="UnknownId"
+        tools:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="68dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/blooddrop" />
 </RelativeLayout>
